@@ -1,10 +1,17 @@
 void setup() {
   size(1225,1225);
+    
   background(255,255,255);
-    fill(240,0,0);
-    //rect(random(1200),random(1200),random(12,120),random(12,120));
-    //strokeWeight(0);
+  
+    //Hollow Circle
+    fill(255,255,255);
+    stroke(0,0,0);
+    strokeWeight(3);
+    //tint(255,255,255);
+    circle(550,620,300);
+    
     //********************Red Circles*******************
+    fill(240,0,0);
     stroke(240,0,0);
     circle(400,550,50);
     
@@ -27,5 +34,9 @@ void setup() {
     circle(400,350,20);
     circle(400,425,30);
     circle(400,620,30);
-    //line(0,0,random(12,1200),random(12,1200));
-  }
+    circle(550,620,30);
+    
+    //****************Black Lines
+    line(400,620,700,620);
+   }
+   

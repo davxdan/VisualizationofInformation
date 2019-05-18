@@ -1,3 +1,7 @@
+//Here I am replicating the Bahause Art by using Order (12... everywhere) and chaos (random)
+
+
+
 void setup() {
   size(1200,1200);
   background(252,252,252);
