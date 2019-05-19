@@ -1,7 +1,7 @@
 //changing a size or position variable updates the entire portrait
 
 void setup() {
- size (1000,1000); 
+ size (500,500); 
  background(255);
   
 }
@@ -15,7 +15,7 @@ int canvasHeight = height+(height/2);
 //int canvasHeight = height;
 
 //head
-fill(255, 243, 230);
+fill(223, 179, 176);
 beginShape();
 curveVertex(0.044*canvasWidth,0.282*canvasHeight);
 curveVertex(0.059*canvasWidth,0.074*canvasHeight);
@@ -75,7 +75,7 @@ curveVertex(0.328*canvasWidth,0.347*canvasHeight);
 endShape(CLOSE);
 
 ////mouth
-fill(255, 230, 230);
+fill(208, 148, 150);
 beginShape();
 curveVertex(0.134*canvasWidth,0.522*canvasHeight);
 curveVertex(0.134*canvasWidth,0.522*canvasHeight);
@@ -86,11 +86,24 @@ curveVertex(0.269*canvasWidth,0.527*canvasHeight);
 curveVertex(0.227*canvasWidth,0.544*canvasHeight);
 curveVertex(0.178*canvasWidth,0.537*canvasHeight);
 curveVertex(0.178*canvasWidth,0.537*canvasHeight);
+endShape(CLOSE);
+
+//innerMouth
+fill(176, 104, 105);
+beginShape();
+curveVertex(0.163*canvasWidth,0.517*canvasHeight);
+curveVertex(0.163*canvasWidth,0.517*canvasHeight);
+curveVertex(0.181*canvasWidth,0.516*canvasHeight);
+curveVertex(0.199*canvasWidth,0.518*canvasHeight);
+curveVertex(0.217*canvasWidth,0.523*canvasHeight);
+curveVertex(0.232*canvasWidth,0.52*canvasHeight);
+curveVertex(0.25*canvasWidth,0.524*canvasHeight);
+curveVertex(0.25*canvasWidth,0.524*canvasHeight);
 
 endShape(CLOSE);
 
 ////hair
-fill(51, 26, 0);
+fill(66, 55, 53);
 beginShape();
 curveVertex(0.05*canvasWidth,0.286*canvasHeight);
 curveVertex(0.056*canvasWidth,0.242*canvasHeight);
@@ -131,7 +144,7 @@ endShape();
 
 ////nose
 noStroke();
-fill(245, 233, 220);
+fill(203, 160, 154);
 beginShape();
 curveVertex(0.199*canvasWidth,0.34*canvasHeight);
 curveVertex(0.199*canvasWidth,0.34*canvasHeight);
@@ -148,7 +161,7 @@ curveVertex(0.247*canvasWidth,0.433*canvasHeight);
 endShape(CLOSE);
 
 ////leftEyeball
-fill(51, 26, 0);
+fill(45, 27, 23);
 beginShape();
 curveVertex(0.12*canvasWidth,0.318*canvasHeight);
 curveVertex(0.12*canvasWidth,0.318*canvasHeight);
@@ -174,5 +187,99 @@ curveVertex(0.297*canvasWidth,0.332*canvasHeight);
 
 endShape();
 endShape(CLOSE);
+
+//leftEyebrow
+fill(66, 55, 53);
+beginShape();
+curveVertex(0.188*canvasWidth,0.308*canvasHeight);
+curveVertex(0.188*canvasWidth,0.308*canvasHeight);
+curveVertex(0.193*canvasWidth,0.297*canvasHeight);
+curveVertex(0.18*canvasWidth,0.293*canvasHeight);
+curveVertex(0.161*canvasWidth,0.285*canvasHeight);
+curveVertex(0.137*canvasWidth,0.28*canvasHeight);
+curveVertex(0.119*canvasWidth,0.28*canvasHeight);
+curveVertex(0.099*canvasWidth,0.285*canvasHeight);
+curveVertex(0.082*canvasWidth,0.29*canvasHeight);
+curveVertex(0.143*canvasWidth,0.306*canvasHeight);
+curveVertex(0.143*canvasWidth,0.306*canvasHeight);
+endShape(CLOSE);
+
+//rightEyeBrow
+beginShape();
+curveVertex(0.267*canvasWidth,0.306*canvasHeight);
+curveVertex(0.267*canvasWidth,0.306*canvasHeight);
+curveVertex(0.297*canvasWidth,0.305*canvasHeight);
+curveVertex(0.321*canvasWidth,0.306*canvasHeight);
+curveVertex(0.346*canvasWidth,0.319*canvasHeight);
+curveVertex(0.33*canvasWidth,0.329*canvasHeight);
+curveVertex(0.313*canvasWidth,0.328*canvasHeight);
+curveVertex(0.279*canvasWidth,0.319*canvasHeight);
+curveVertex(0.265*canvasWidth,0.313*canvasHeight);
+curveVertex(0.265*canvasWidth,0.313*canvasHeight);
+endShape(CLOSE);
+
+//leftEyebag
+fill(177, 140, 131);
+//curve(0.282*canvasWidth,0.351*canvasHeight,0.306*canvasWidth,0.364*canvasHeight,0.327*canvasWidth,0.365*canvasHeight,0.342*canvasWidth,0.363*canvasHeight);
+curve(.272*canvasWidth,.314*canvasHeight,.284*canvasWidth,.356*canvasHeight,.337*canvasWidth,.358*canvasHeight,.366*canvasWidth,.338*canvasHeight);
+
+
+//rightEyeBag
+curve(.201*canvasWidth,.288*canvasHeight,.171*canvasWidth,.347*canvasHeight,.091*canvasWidth,.331*canvasHeight,.069*canvasWidth,.261*canvasHeight);
+//beginShape();
+//curveVertex(201.0,288.0);
+//curveVertex(171.0,347.0);
+//curveVertex(91.0,331.0);
+//curveVertex(69.0,261.0);
+//endShape();
+
+//chinShadow
+beginShape();
+fill(203, 160, 154);
+curveVertex(0.165*canvasWidth,0.546*canvasHeight);
+curveVertex(0.165*canvasWidth,0.546*canvasHeight);
+curveVertex(0.189*canvasWidth,0.542*canvasHeight);
+curveVertex(0.209*canvasWidth,0.547*canvasHeight);
+curveVertex(0.231*canvasWidth,0.552*canvasHeight);
+curveVertex(0.242*canvasWidth,0.559*canvasHeight);
+curveVertex(0.225*canvasWidth,0.565*canvasHeight);
+curveVertex(0.192*canvasWidth,0.561*canvasHeight);
+curveVertex(0.177*canvasWidth,0.555*canvasHeight);
+curveVertex(0.177*canvasWidth,0.555*canvasHeight);
+endShape();
+
+//upperLip
+beginShape();
+curveVertex(0.218*canvasWidth,0.463*canvasHeight);
+curveVertex(0.218*canvasWidth,0.463*canvasHeight);
+curveVertex(0.21*canvasWidth,0.468*canvasHeight);
+curveVertex(0.211*canvasWidth,0.476*canvasHeight);
+curveVertex(0.212*canvasWidth,0.484*canvasHeight);
+curveVertex(0.214*canvasWidth,0.488*canvasHeight);
+curveVertex(0.219*canvasWidth,0.481*canvasHeight);
+curveVertex(0.219*canvasWidth,0.481*canvasHeight);
+endShape();
+
+//leftNostril
+beginShape();
+curveVertex(0.182*canvasWidth,0.448*canvasHeight);
+curveVertex(0.182*canvasWidth,0.448*canvasHeight);
+curveVertex(0.189*canvasWidth,0.443*canvasHeight);
+curveVertex(0.198*canvasWidth,0.45*canvasHeight);
+curveVertex(0.196*canvasWidth,0.456*canvasHeight);
+curveVertex(0.184*canvasWidth,0.453*canvasHeight);
+curveVertex(0.184*canvasWidth,0.453*canvasHeight);
+endShape(CLOSE);
+
+//rightNostril
+beginShape();
+curveVertex(0.23*canvasWidth,0.449*canvasHeight);
+curveVertex(0.23*canvasWidth,0.449*canvasHeight);
+curveVertex(0.236*canvasWidth,0.447*canvasHeight);
+curveVertex(0.243*canvasWidth,0.446*canvasHeight);
+curveVertex(0.25*canvasWidth,0.453*canvasHeight);
+curveVertex(0.247*canvasWidth,0.461*canvasHeight);
+curveVertex(0.247*canvasWidth,0.461*canvasHeight);
+endShape();
 
 }
