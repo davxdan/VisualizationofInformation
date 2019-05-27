@@ -1,6 +1,6 @@
-float birthRate = 1;
+float birthRate = 10;
 float particleCountCurrent = 0;
-int particleCount = 1000;
+int particleCount = 10000;
 float[] x = new float[particleCount];
 float[] y = new float[particleCount];
 float[] radius = new float[particleCount];
@@ -12,7 +12,7 @@ float[] damping = new float[particleCount]; //can simulate weight of objects via
 float[] friction = new float[particleCount];
 
 void setup(){
-  size(1000, 800);
+  size(3840, 2160);
   for( int i = 0; i < particleCount; i += 1) {
     x[i] = width/2;
     y[i] = 250;
