@@ -2,7 +2,7 @@
      //local variables in this function hide the global ones because we are re-declaring them
      float theta  = 0;
      float rotAmount = TWO_PI/sides;
-     //fill(fillCol);
+     fill(fillCol);
      beginShape();
      float x2=0, y2=0;
      for(int i = 0; i < sides; i += 1 ) { 
