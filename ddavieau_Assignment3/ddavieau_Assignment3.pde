@@ -1,4 +1,6 @@
 
+PImage bg;
+
 float earthVel = 0;
 float moonVel = 0;
 
@@ -13,13 +15,14 @@ float charlieVel = 0;
 
 void setup()
 {
+  bg = loadImage("stars.jpg");
   size(1920, 1920); 
   strokeWeight(12);
 }
 
 void draw()
 {
-  background(0);
+  background(bg);
   noFill();
   stroke(0);
   //ellipseMode(CENTER);
@@ -100,7 +103,7 @@ void draw()
 void drawSun()
 {
   fill(255,167,0);
-  stroke(255,0,0,100);
+  stroke(255,255,150,random(50,100));
   ellipseMode(CENTER);
   ellipse(width/2, height/2, 75, 75);
   
