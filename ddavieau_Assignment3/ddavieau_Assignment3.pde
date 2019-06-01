@@ -103,7 +103,7 @@ void draw()
 void drawSun()
 {
   fill(255,167,0);
-  stroke(255,255,150,random(50,100));
+  stroke(255,167,0,random(50,100));
   ellipseMode(CENTER);
   ellipse(width/2, height/2, 75, 75);
   
