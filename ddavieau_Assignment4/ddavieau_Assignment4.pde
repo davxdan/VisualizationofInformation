@@ -1,4 +1,4 @@
-//Assignment 3 original
+//Assignment 3 original. Added Background and a Comet (particles)
 PImage bg;
 float cometVel = 0;
 float earthVel = 0;
