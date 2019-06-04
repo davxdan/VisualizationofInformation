@@ -1,9 +1,7 @@
-
+//Assignment 3 original
 PImage bg;
-
 float earthVel = 0;
 float moonVel = 0;
-
 float mercVel = 0;
 float venusVel = 0;
 float marsVel = 0;
@@ -13,18 +11,46 @@ float alphaVel = 0;
 float bravoVel = 0;
 float charlieVel = 0;
 
+//Variables from BLT
+float birthRate = 10;
+float particleCountCurrent = 0;
+int particleCount = 10000;
+float[] x = new float[particleCount];
+float[] y = new float[particleCount];
+float[] radius = new float[particleCount];
+float[] speedX = new float[particleCount];
+float[] speedY = new float[particleCount];
+int[] sideCount = new int[particleCount];
+float[] gravity = new float[particleCount];
+float[] damping = new float[particleCount]; //can simulate weight of objects via damping
+float[] friction = new float[particleCount];
+
+
 void setup()
 {
   bg = loadImage("stars.jpg");
   size(1920, 1920); 
   strokeWeight(12);
+  
+  for( int i = 0; i < particleCount; i += 1) 
+  {
+    x[i] = width/2;
+    y[i] = 250;
+    speedX[i] = random(-1.2,1.2);
+    sideCount[i] = int(random(3,10));//because random creates a float by default we cast it as an int
+    speedY[i] = random(-2,-5);
+    radius[i] = random(1,4);
+    gravity[i] = .03;
+    damping[i] = .77;
+    friction[i] = .77;
+  }
 }
 
 void draw()
 {
   background(bg);
   noFill();
-  stroke(0);
+  noStroke();
   //ellipseMode(CENTER);
   drawSun();
   
@@ -121,7 +147,7 @@ void drawEarth()
 void drawMerc()
 {
   fill(174,106,106);
-  stroke(0);
+  noStroke();
   ellipseMode(CENTER);
   ellipse(0, 0, 25, 25);
   noFill();
@@ -165,7 +191,7 @@ void drawTitan()
 void drawAlpha()
 {
   fill(255,255,255);
-  stroke(0);
+  noStroke();
   ellipseMode(CENTER);
   ellipse(0, 0, 8, 8);
   noFill();
@@ -174,7 +200,7 @@ void drawAlpha()
 void drawBravo()
 {
   fill(255,255,255);
-  stroke(0);
+  noStroke();
   ellipseMode(CENTER);
   ellipse(0, 0, 12, 12);
   noFill();
@@ -183,7 +209,7 @@ void drawBravo()
 void drawCharlie()
 {
   fill(255,255,255);
-  stroke(0);
+  noStroke();
   ellipseMode(CENTER);
   ellipse(0, 0, 15, 15);
   noFill();
@@ -192,7 +218,7 @@ void drawCharlie()
 void drawMoon()
 {
   fill(233,239,249);
-  stroke(233,239,249,100);
+  noStroke();
   ellipseMode(CENTER);
   ellipse(0, 0, 15, 15);
   noFill();
