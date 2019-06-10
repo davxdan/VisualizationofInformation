@@ -14,7 +14,9 @@ public void settings() {
 }
 
 void setup(){
+  noStroke();
   image(img,0,0);
+  noStroke();
   img.loadPixels();
   loadPixels();
   for (int i=0;i<pixels.length; i++)
