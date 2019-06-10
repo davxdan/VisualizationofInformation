@@ -4,14 +4,14 @@
 
 PImage img;
 public void settings() {
-  img = loadImage("stars.jpg");
+  img = loadImage("capitol.jpg");
   float w = img.width;
   float h = img.height; 
   size(int(w), int(h));
 }
 
 void setup(){
-  img = loadImage("stars.jpg");
+  img = loadImage("capitol.jpg");
   image(img,0,0);
   img.loadPixels();
    loadPixels();
