@@ -39,7 +39,7 @@ PImage matrixIt(PImage x) {
     }
     pixels[i] = color(r,g,b);
   }
-    return x;
+  return x;
 }
 
 

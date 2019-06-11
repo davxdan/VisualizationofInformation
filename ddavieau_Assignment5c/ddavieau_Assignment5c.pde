@@ -1,11 +1,9 @@
 int[][] convolutionKernel ={{0,  1, 0},{1, -4, 1},{0,  1, 0},};
-
 PImage matrixThis;
 int loadedPixelsPerLoop = 1;
 
 public void settings() {
-  //matrixThis = loadImage("capitol.jpg");
-  matrixThis = loadImage("capitolGreen.jpg");
+  matrixThis = loadImage("capitol.jpg");
   float w = matrixThis.width;
   float h = matrixThis.height; 
   size(int(w), int(h));
@@ -13,14 +11,19 @@ public void settings() {
 
 void setup(){
   image(matrixThis,0,0);
-  //loadPixels();
-  //matrixIt(matrixThis);
-  //updatePixels();
-  //save("capitolGreen.jpg");
+  loadPixels();
+  matrixIt(matrixThis);
+  updatePixels(); 
 }
 
-void draw() {
+
+void draw() { 
+  image(matrixThis,0,0);
+  loadPixels();
+  matrixIt(matrixThis);
+  updatePixels();
   PImage convolutedImage = createImage(matrixThis.width, matrixThis.height, RGB);
+  convolutedImage.updatePixels();
   for (int y = 1; y < matrixThis.height-1; y++) {   // Skip top and bottom edges
     for (int x = 1; x < matrixThis.width-1; x++) {  // Skip left and right edges
       float red = 0; 
