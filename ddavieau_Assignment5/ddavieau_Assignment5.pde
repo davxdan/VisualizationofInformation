@@ -1,69 +1,45 @@
-//int
-//float
-//for (int i=0;i<100;i++)
-//{}
+int[][] convolutionKernel ={{0,  1, 0},{1, -4, 1},{0,  1, 0},};
 
-int [][] states = {
-  {0,0,0},
-  {0,0,1},
-  {0,1,0},
-  {0,1,1},
-  {1,0,0},
-  {1,0,1},
-  {1,1,0},
-  {1,1,1}
-};
+PImage matrixThis;
+int loadedPixelsPerLoop = 1;
 
-int [] rules = {0,1,1,1,1,1,1,0};
+public void settings() {
+  //matrixThis = loadImage("capitol.jpg");
+  matrixThis = loadImage("capitolGreen.jpg");
+  float w = matrixThis.width;
+  float h = matrixThis.height; 
+  size(int(w), int(h));
+}
 
-void setup()
-{
-  size (800,800);
-  background(255);
-  
-  //1. initialize srcBits
-  int[][] srcBits = new int[height][width];
-  for(int i=0;i<height;i++)
-  {
-    for(int j=0;j<width;j++)
-    {
-      if (i== height -1 && j ==width/2)
-      {
-        srcBits[i][j] = 1;
-      }
-      else
-      {
-        srcBits[i][j] = 0;
-      }
-    
+void setup(){
+  image(matrixThis,0,0);
+  //loadPixels();
+  //matrixIt(matrixThis);
+  //updatePixels();
+  //save("capitolGreen.jpg");
+}
+
+void draw() {
+  PImage convolutedImage = createImage(matrixThis.width, matrixThis.height, RGB);
+  for (int y = 1; y < matrixThis.height-1; y++) {   // Skip top and bottom edges
+    for (int x = 1; x < matrixThis.width-1; x++) {  // Skip left and right edges
+      float red = 0; 
+      float green = 0;
+      float blue = 0;
+        for (int ky = -1; ky <= 1; ky++) {
+          for (int kx = -1; kx <= 1; kx++) {
+            int pos = (y + ky)*matrixThis.width + (x + kx);
+            float valR = red(matrixThis.pixels[pos]);
+            float valG = green(matrixThis.pixels[pos]);
+            float valB = blue(matrixThis.pixels[pos]);
+            red += convolutionKernel[ky+1][kx+1] * valR;
+            green += convolutionKernel[ky+1][kx+1] * valG;
+            blue += convolutionKernel[ky+1][kx+1] * valB;
+          }
+        }
+      convolutedImage.pixels[y*matrixThis.width + x] = color(red, green, blue);
     }
   }
-
-
-//2. Update srcBits based on rules and 1D adjacent neighborhood
-  for (int i=srcBits.length-1; i>0;i--)
-  {
-    for (int j=1; j<srcBits[i].length-1;j++)
-    {
-      // do actual checking o frules here
-      int bit = checkNeighborhood(srcBits[i][j-1],srcBits[i][j],srcBits[i][j+1]);
-      srcBits[i-1][j] = bit;
-      
-    }
-  }
-  
-  //3. display bits
-  loadPixels();
-  for(int i=0;i<height;i++)
-  {
-    for(int j=0;j<width;j++)
-    {
-      int k=i*width+j;
-      if (srcBits[i][j]==1)
-      {
-        pixels[k] = color(0);
-      }
-    }
-  }
- updatePixels(); 
+  convolutedImage.updatePixels();
+  image(convolutedImage, 0, 0);
 }
