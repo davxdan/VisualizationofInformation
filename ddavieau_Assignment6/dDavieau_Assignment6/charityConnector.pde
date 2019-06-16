@@ -1,6 +1,6 @@
 import java.net.*; //importa the java.net library
 
-  public JSONObject loadData() //declares the function
+  public JSONObject loadCharityData() //declares the function
   {
     String request = "http://data.orghunter.com/v1/charitysearch?user_key=ffc6e8b43a5b7e41899b6dcb65086dbc&ein=911663695"; //sets the request variable = to a string
     JSONObject jsonObject = null; //declares an empty JSON object
