@@ -12,24 +12,23 @@ void settings() {
 }
 
 void setup() {
-  json = loadCharityData();//set json = to the what is returned by loadData() function 
-  //println(json);
-  background(255);
-  smooth();
-  fill(0,81,162);
+  //background(0,81,162);
+  background(13,2,8);
+  fill(0, 255, 65);
   noStroke();
-  
+  //stroke(3);
+
+  json = loadCharityData();//set json = to the what is returned by loadCharityData() function
+  println(json);
+ 
   table = loadTable("seg_00a37e.csv", "header"); //Load data from my captsone project
   int recordCount = table.getRowCount();
   ySignalCoordinates = new int[recordCount];
+
   beginShape();
-  for (int i=0;i<recordCount;i+=1) { //<>//
+  for (int i=0;i<recordCount;i+=1,xTime+=.0256) { //<>//
     ySignalCoordinates[i] = table.getInt(i,"acoustic_data");
-    curveVertex(xTime,(ySignalCoordinates[i]*5)+height/2);
-    //ellipse(int(xTime),(ySignalCoordinates[i]*5)+height/2,2,2);
-    //point(int(xTime),(ySignalCoordinates[i]*5)+height/2);
-    xTime+=.0256;
+    curveVertex(xTime,(ySignalCoordinates[i]*8)+height/2);
   }
   endShape();
-  println(ySignalCoordinates);
 }
