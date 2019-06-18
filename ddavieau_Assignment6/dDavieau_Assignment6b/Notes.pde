@@ -69,3 +69,34 @@
 //    ellipse(coords[i], coords[i + 1], 3, 3);
 //  }
 //}
+
+
+//Example of getting hasmap form JSON
+//JSONObject myObject;
+//HashMap<String, String> myHashmap;
+//// Keys to get from JSON source.
+//String[] myKeys = {
+//  "preview",
+//  "preview_url",
+//  "bib_key",
+//  "thumbnail_url",
+//  "info_url"
+//};
+//void settings()
+//{
+//  myHashmap = new HashMap<String, String>();
+//  myObject = loadJSONObject("https://openlibrary.org/api/books?bibkeys=ISBN:0385472579&format=json");
+//  // Print source JSON
+//  println(myObject);
+//  JSONObject dataObject = myObject.getJSONObject("ISBN:0385472579");
+//  // Fill out the hashmap with the given keys.
+//  for(String myKey : myKeys)
+//  {
+//    myHashmap.put(myKey, dataObject.getString(myKey));
+//  }
+//  // Print the hashmap
+//  for(HashMap.Entry entry : myHashmap.entrySet())
+//  {
+//    println(entry.getKey() + " : " + entry.getValue());
+//  }
+//}
