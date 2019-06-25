@@ -1,7 +1,6 @@
 class Dataload {
   //add properties inside curlies
-  float wt;
-  String breed;
+  int[] ydata;
   String filename;
   String header;
   Table table;
@@ -11,29 +10,25 @@ class Dataload {
   Dataload() {
   }
   
-  Dataload(float wt, String breed) {
-    this.wt = wt;
-    this.breed = breed;
-  }
-  
-  Dataload(String filename, String header) {
+  Dataload(String filename, String header,int[] ydata) {
     this.filename = filename;
     this.header = header;
     this.table = loadTable(filename, header);
     this.recordCount = table.getRowCount();
+    this.ydata = new int[recordCount];
+    setY(ydata);
     println("The "+filename," file was loaded with "+recordCount+" rows");
   }
     
   //add methods
-  void move() {
-  }
   
   // setters and getters
-  void setWt(float wt) {
-    this.wt = wt;
+  void setY(int[] ydata) {
+    for (int i=0;i<this.recordCount;i+=1) {
+      this.ydata[i] = table.getInt(i,"acoustic_data");
+    }
   }
-
-  float getWt() {
-    return wt;
-  }
+  //float getWt() {
+  //  return wt;
+  //}
 }
