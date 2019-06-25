@@ -7,7 +7,7 @@ Dataloader acousticSignal; //declare a Dataloader object //<>//
 Gridplotter gridlines; //declare a Gridplotter object
 
 void setup(){
-  size(1920, 1080);
+  size(3840, 2160);
   sketchWidth = width; //get the sketch width so scaling is possible
   sketchHeight = height; //get the sketch width so scaling is possible
   acousticSignal = new Dataloader("seg_00a37e.csv","header",y); //instantiate a Dataloader object with name acousticSignal
