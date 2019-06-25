@@ -1,7 +1,7 @@
 Table table;
 int[] ySignalCoordinates;
 float xTime;
-Dataload c1, c2, c3;
+Dataload c1, acousticSignal;
 
 void setup(){
 //The settings() function is not needed in most sketches.
@@ -12,17 +12,13 @@ void setup(){
   
   size(1920, 1080);
   
-  c1= new Dataload();
-  c1.wt = 27;
-  
-  c2= new Dataload();
-  c2.wt = 30;
-  
-  c3= new Dataload(24,"Heehee", false,9);
-  
+  c1= new Dataload(27,"derperher");
+  println(c1.wt);
 
+  acousticSignal= new Dataload("seg_00a37e.csv","header");
   table = loadTable("seg_00a37e.csv", "header"); //Load data from my captsone project
   int recordCount = table.getRowCount();
+  
   ySignalCoordinates = new int[recordCount];
 
   beginShape();

@@ -2,9 +2,11 @@ class Dataload {
   //add properties inside curlies
   float wt;
   String breed;
-  boolean isLongHaired;
-  int age;
-  
+  String filename;
+  String header;
+  Table table;
+  int recordCount;
+    
   //add Constructors. Constructors initialize but do not return 
   Dataload() {
   }
@@ -14,20 +16,16 @@ class Dataload {
     this.breed = breed;
   }
   
-  Dataload(float wt, String breed,boolean isLongHaired,int age) {
-    this.wt = wt;
-    this.breed = breed;
-    this.isLongHaired = isLongHaired;
-    this.age = age;
-    println("in cstr");
+  Dataload(String filename, String header) {
+    this.filename = filename;
+    this.header = header;
+    this.table = loadTable(filename, header);
+    this.recordCount = table.getRowCount();
+    println("The "+filename," file was loaded with "+recordCount+" rows");
   }
-
+    
   //add methods
   void move() {
-  }
-  void eat() {
-  }
-  void speak() {
   }
   
   // setters and getters
