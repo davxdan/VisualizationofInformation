@@ -1,9 +1,9 @@
-void gridMaker(int gridWidth, int gridHeight,int cols, int rows,color strokeColor, color fillColor) {
+void plotGrid(int gridWidth, int gridHeight,int cols, int rows,color strokeColor, color fillColor) {
 //local variables in this function hide the global ones because we are re-declaring them
-float xCoordinate = width/4;
-float yCoordinate = height/4;
+//float xCoordinate = width/4;
+//float yCoordinate = height/4;
 
-translate(xCoordinate,yCoordinate);
+//translate(xCoordinate,yCoordinate);
 fill(fillColor);
 stroke(strokeColor);
 int[][] vals2d = new int[cols][rows];
