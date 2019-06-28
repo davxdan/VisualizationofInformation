@@ -6,10 +6,8 @@ class Dataloader {
   Table table;
   int recordCount;
     
-  //add Constructors. Constructors initialize but do not return 
-  Dataloader() {
-  }
-  
+  //Constructors initialize but do not return 
+ 
   Dataloader(String filename, String header,int[] ydata) {
     this.filename = filename;
     this.header = header;
