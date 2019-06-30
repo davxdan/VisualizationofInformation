@@ -18,3 +18,10 @@
    
   //int yearMin, yearMax;
   //int[] years;
+  
+//Description  Normalizes a number from another range into a value between 0 and 1. Identical to map(value, low, high, 0, 1).  
+//float n = norm(value, 0, 50);
+//println(n);  // Prints "0.4"
+//float value = -10;
+//float n = norm(value, 0, 100);
+//println(n);  // Prints "-0.1"

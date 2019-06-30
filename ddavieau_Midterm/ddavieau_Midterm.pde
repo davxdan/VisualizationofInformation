@@ -1,11 +1,16 @@
-int[] xAcousticSignal; //<>//
-float[] yTimeToFailure;
+int [] xAcousticSignal; //<>//
+float [] yTimeToFailure;
 float xSequentialCoordinate;
 int recordCount;
 int gridX;
 int gridY;
 float sketchWidth;
-float sketchHeight; 
+float sketchHeight;
+
+int xAcousticSignalSum;
+float yTimeToFailureSum;
+int xAcousticSignalMean;
+float yTimeToFailureMean;
 
 Dataloader data; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
@@ -32,7 +37,14 @@ void setup() {
     vertex(xSequentialCoordinate, (data.ydata[i]*=-20)+sketchHeight);
   }
   endShape();
-  
+ 
   gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120));
-  println(gridY);
+  
+  for (int i=0; i<recordCount; i+=1) {
+    xAcousticSignalSum+=data.xdata[i];
+    yTimeToFailureSum+=data.ydata[i];
+  }
+  yTimeToFailureMean = yTimeToFailureSum/recordCount;
+  
+  println(yTimeToFailureMean);
 }
