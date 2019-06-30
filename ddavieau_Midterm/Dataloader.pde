@@ -1,7 +1,7 @@
 class Dataloader {
   //add properties inside curlies
-  int[] ydata;
-  float[] xdata;
+  float[] ydata;
+  int[] xdata;
   String filename;
   String header;
   Table table;
@@ -9,29 +9,30 @@ class Dataloader {
     
   //Constructors initialize but do not return 
  
-  Dataloader(String filename, String header,int[] ydata,float[] xdata) {
+  Dataloader(String filename, String header,int[] xdata,float[] ydata) {
     this.filename = filename;
     this.header = header;
     this.table = loadTable(filename, header);
     this.recordCount = table.getRowCount();
-    this.ydata = new int[recordCount];
-    this.xdata = new float[recordCount];
-    setY(ydata);
+    this.ydata = new float[recordCount];
+    this.xdata = new int[recordCount];
     setX(xdata);
+    setY(ydata);
+    
     println("The "+filename," file was loaded with "+recordCount+" rows");
   }
     
   //add methods
   // setters and getters
-  void setY(int[] ydata) {
+  void setX(int[] xdata) {
     for (int i=0;i<this.recordCount;i+=1) {
-      this.ydata[i] = table.getInt(i,"acoustic_data");
+      this.xdata[i] = table.getInt(i,"acoustic_data");
     }
   }
-  
-  void setX(float[] xdata) {
+    
+  void setY(float[] ydata) {
     for (int i=0;i<this.recordCount;i+=1) {
-      this.xdata[i] = table.getFloat(i,"time_to_failure");
+      this.ydata[i] = table.getFloat(i,"time_to_failure");
     }
   }
 }
