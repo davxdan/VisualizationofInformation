@@ -10,7 +10,7 @@ void setup(){
   size(3840, 2160);
   sketchWidth = width; //get the sketch width so scaling is possible
   sketchHeight = height; //get the sketch width so scaling is possible
-  acousticSignal = new Dataloader("First10000000.csv","header",y); //instantiate a Dataloader object with name acousticSignal
+  acousticSignal = new Dataloader("sample100000.csv","header",y); //instantiate a Dataloader object with name acousticSignal
   yRecordCount = acousticSignal.ydata.length;
   
   beginShape(POINTS);
