@@ -12,7 +12,8 @@ float[] damping = new float[particleCount]; //can simulate weight of objects via
 float[] friction = new float[particleCount];
 
 void setup(){
-  size(3840, 2160);
+  size(1920, 1080);
+  frameRate(60);
   for( int i = 0; i < particleCount; i += 1) {
     x[i] = width/2;
     y[i] = 250;
