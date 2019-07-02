@@ -20,10 +20,10 @@ void setup() {
   background(255);
   sketchWidth = width; //get the sketch width so scaling is possible
   sketchHeight = height; //get the sketch width so scaling is possible
-  data = new Dataloader("sample100000.csv", "header", xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
+  data = new Dataloader("plotme.csv", "header", xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
   recordCount = data.xdata.length;
   gridX=int(recordCount/sketchWidth);
-  gridY=ceil(max(data.ydata));
+  gridY=ceil(max(data.ydata)*100);
   
   beginShape(POINTS);
   for (int i=0; i<recordCount; i+=1,xSequentialCoordinate+=(sketchWidth/recordCount)) {
@@ -34,7 +34,9 @@ void setup() {
     
     stroke(204,0,53);
     strokeWeight(2);
-    vertex(xSequentialCoordinate, (data.ydata[i]*=-20)+sketchHeight);
+    //vertex(xSequentialCoordinate, (data.ydata[i]*=-20)+sketchHeight);
+    vertex(xSequentialCoordinate, (data.ydata[i])+sketchHeight/2);
+    println(data.ydata[i]);
   }
   endShape();
  
