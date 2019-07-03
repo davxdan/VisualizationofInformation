@@ -26,7 +26,7 @@ class Gridplotter {
     for(int i=0; i<this.vals2d.length;i++) {
       for(int j=0; j<this.vals2d.length;j++) {
         noFill();
-        stroke(0,0,0);
+        stroke(110,110,120);
         strokeWeight(1);
         rect(colSpan*i, rowSpan*j, colSpan, rowSpan);
       }

@@ -1,4 +1,8 @@
-int [] xAcousticSignal; //<>//
+//From Shon Mohsin to Everyone:  07:46 PM //<>//
+//Daniel you can log-transform the data to bring it to scale to help with outliers
+//or create a small function to identify and drop extreme points
+/////////////Look at ControlP5
+int [] xAcousticSignal;
 float [] yTimeToFailure;
 float xSequentialCoordinate;
 int recordCount;
@@ -16,11 +20,11 @@ Dataloader data; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
 
 void setup() {
-  size(1920, 1080);
+  size(3840, 2160);
   background(255);
   sketchWidth = width; //get the sketch width so scaling is possible
   sketchHeight = height; //get the sketch width so scaling is possible
-  data = new Dataloader("plotme.csv", "header", xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
+  data = new Dataloader("plotlogx.csv", "header", xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
   recordCount = data.xdata.length;
   gridX=int(recordCount/sketchWidth);
   gridY=ceil(max(data.ydata)*100);
@@ -36,7 +40,7 @@ void setup() {
     strokeWeight(2);
     //vertex(xSequentialCoordinate, (data.ydata[i]*=-20)+sketchHeight);
     vertex(xSequentialCoordinate, (data.ydata[i])+sketchHeight/2);
-    println(data.ydata[i]);
+    //println(data.ydata[i]);
   }
   endShape();
  
@@ -48,5 +52,5 @@ void setup() {
   }
   yTimeToFailureMean = yTimeToFailureSum/recordCount;
   
-  println(yTimeToFailureMean);
+  //println(yTimeToFailureMean);
 }
