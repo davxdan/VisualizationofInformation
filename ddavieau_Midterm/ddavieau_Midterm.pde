@@ -11,16 +11,15 @@ float sketchWidth;
 float sketchHeight;
 int xAcousticSignalSum;
 float yTimeToFailureSum;
-int xAcousticSignalMean;
+float xAcousticSignalMean;
 float yTimeToFailureMean;
 Window window; //creates a window object and returns it's corners based on location
 Dataloader data; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
 
 void settings() { //runs before the sketch has been set up, so other Processing functions cannot be used at that point
-
   window = new Window(); //create a window object
-  size(1920, 1080);
+  size(3840, 2160);
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
@@ -43,29 +42,27 @@ void setup() { //Note: Variables declared within setup() are not accessible with
     vertex(xSequentialCoordinate, (data.ydata[i])+sketchHeight/2);
   }
   endShape();
-   
+  
   gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>//
-  myBackground = get();
+  myBackground = get(); //<<<Snapshot the pixels into the myBackground variable for re-use in draw.
+                        //It took me a whole day to figure this out... out my neck hurts.
  //<>//
-  for (int i=0; i<recordCount; i+=1) {
+    for (int i=0; i<recordCount; i+=1) {//get sum of x and y for mean and other calcs
     xAcousticSignalSum+=data.xdata[i];
     yTimeToFailureSum+=data.ydata[i];
   }
   
   yTimeToFailureMean = yTimeToFailureSum/recordCount;
-  println(yTimeToFailureMean);
+  xAcousticSignalMean = xAcousticSignalSum/recordCount;
+  println("The mean Time To Failure is "+yTimeToFailureMean+".");
+  println("The mean Acoustic Signal is "+xAcousticSignalMean+".");
 }
 
-
-
-
-
 void draw() {
-  //PImage myBackground = get();
   image(myBackground, 0, 0);
   window.drawWindow();
 }
-  
-void mouseMoved() { //<>// //<>//
+ 
+void mouseMoved() { //<>//
 window.updatePos(mouseX, mouseY); //<>//
 }
