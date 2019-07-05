@@ -24,6 +24,7 @@ float yTimeToFailureMean;
 void settings() { //runs before the sketch has been set up, so other Processing functions cannot be used at that point
   window = new Window(); //create a window object
   size(1920, 1080);
+  converter = new Converter(width, height);
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
