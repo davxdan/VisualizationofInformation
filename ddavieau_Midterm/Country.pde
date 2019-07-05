@@ -1,8 +1,8 @@
 class Country
 {
-  private String code;
-  private String name;
-  private PVector position;
+  private String code; //country code
+  private String name; //country name
+  private PVector position; 
   private int origins;
   
   public Country(String _code, String _name, PVector _position)

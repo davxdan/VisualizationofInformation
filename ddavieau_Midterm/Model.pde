@@ -1,12 +1,11 @@
 class Model //loads countries and airplane data
 {
   private static final String BASE_API = "https://opensky-network.org/api/states/all?";
+  private ArrayList<Plane> planes; //Difference (ArrayList and HashMap) ArrayList only stores one object. HashMap stores two objects (key and value)
   ////////////////////////////////////////////
   private HashMap<String, Observation> observations; //Key value pairs; HashMap cannot contain duplicate keys,allows null values and key,is unordered
-  private ArrayList<Observation> stats;
+  private ArrayList<Observation> stats; //ArrayList only stores one object.
   private int indexNumber;
-  
-  private ArrayList<Plane> planes; //Difference (ArrayList and HashMap) ArrayList only stores one object. HashMap stores two objects (key and value)
   private Controller controller; //Custom Class
   private float minAltitude;
   private float maxAltitude;

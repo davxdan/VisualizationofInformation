@@ -6,9 +6,8 @@ class Dataloader {
   String header;
   Table table;
   int recordCount;
-    
+   
   //Constructors initialize but do not return 
- 
   Dataloader(String filename, String header,int[] xdata,float[] ydata) {
     this.filename = filename;
     this.header = header;
@@ -18,7 +17,6 @@ class Dataloader {
     this.xdata = new int[recordCount];
     setX(xdata);
     setY(ydata);
-    
     println("The "+filename," file was loaded with "+recordCount+" rows");
   }
     

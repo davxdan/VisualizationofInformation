@@ -1,15 +1,21 @@
-//Look at ControlP5 //<>// //<>// //<>//
+//Look at ControlP5 //<>// //<>//
 import java.util.Map; // kvp mapping https://www.geeksforgeeks.org/map-interface-java-examples/
 Controller control;
 PImage myBackground;
 Window window; //creates a window object and returns it's corners based on location
 Converter converter;
+
+///////////////////////////////////
 ArrayList<Country> origins; //Arraylist allows for dynamic size unlike simple int []. https://www.youtube.com/watch?v=VE0HeWFaAIQ
+ArrayList<Observation> stats;
 int[] minMaxOrigins;
+///////////////////////////////////
+
+
+
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
-ArrayList<Observation> stats;
-int [] xAcousticSignal; //<>// //<>// //<>//
+int [] xAcousticSignal; //<>// //<>// //<>// //<>//
 float [] yTimeToFailure;
 float xSequentialCoordinate;
 int recordCount;
@@ -28,7 +34,13 @@ void settings() { //runs before the sketch has been set up, so other Processing 
   size(1920, 1080);
   converter = new Converter(width, height);
   earthquakeData = new Dataloader("plotme.csv", "header", xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
-  origins = new ArrayList<Country>(); 
+  
+  
+  ///////////////////////////////////
+  origins = new ArrayList<Country>();
+  ///////////////////////////////////
+  
+  
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
@@ -52,10 +64,10 @@ void setup() { //Note: Variables declared within setup() are not accessible with
   }
   endShape();
   
-  gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>// //<>// //<>//
+  gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>// //<>// //<>// //<>//
   myBackground = get(); //<<<Snapshot the pixels into the myBackground variable for re-use in draw.
                         //It took me a whole day to figure this out... out my neck hurts.
- //<>// //<>// //<>//
+ //<>// //<>// //<>// //<>//
     for (int i=0; i<recordCount; i+=1) {//get sum of x and y for mean and other calcs
     xAcousticSignalSum+=earthquakeData.xdata[i];
     yTimeToFailureSum+=earthquakeData.ydata[i];
@@ -70,6 +82,9 @@ void setup() { //Note: Variables declared within setup() are not accessible with
 void draw() {
   image(myBackground, 0, 0);
   window.drawWindow();
+  
+  
+  //////////////////////////////////////////////////////////////////////////////////
   for(int i = 0; i < origins.size(); i++) {
     Country c = origins.get(i); //get the country data from origins into the Country c arraylist
     PVector latlon = c.getPosition(); //get the plane;s position
@@ -87,19 +102,23 @@ void draw() {
     fill(0);
     textAlign(CENTER, CENTER);
     text(c.getOrigins(), xy.x, xy.y);
+    /////////////////////////////////////////////////////////////////////////////////
+    
   }
 }
  
-void mouseMoved() { //<>// //<>// //<>//
-window.updatePos(mouseX, mouseY); //<>// //<>// //<>//
+void mouseMoved() { //<>// //<>// //<>// //<>//
+window.updatePos(mouseX, mouseY); //<>// //<>// //<>// //<>//
 }
 
 void mouseClicked()
 {
   PVector windowCorner = window.getWindowCorner();
   cutImage(windowCorner);
+  ///////////////////////////////////////////
   origins = control.getOrigins();
   minMaxOrigins = control.getMinMaxOrigins();
+  ///////////////////////////////////////////
 }
 
 void cutImage(PVector windowCorner) {
