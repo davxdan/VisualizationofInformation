@@ -1,6 +1,12 @@
 //Look at ControlP5 //<>//
-PImage myBackground;
 import java.util.Map; // kvp mapping https://www.geeksforgeeks.org/map-interface-java-examples/
+Controller control;
+Converter converter;
+Window window; //creates a window object and returns it's corners based on location
+Dataloader data; //declare a Dataloader object
+Gridplotter gridlines; //declare a Gridplotter object
+
+PImage myBackground;
 int [] xAcousticSignal; //<>//
 float [] yTimeToFailure;
 float xSequentialCoordinate;
@@ -13,13 +19,11 @@ int xAcousticSignalSum;
 float yTimeToFailureSum;
 float xAcousticSignalMean;
 float yTimeToFailureMean;
-Window window; //creates a window object and returns it's corners based on location
-Dataloader data; //declare a Dataloader object
-Gridplotter gridlines; //declare a Gridplotter object
+
 
 void settings() { //runs before the sketch has been set up, so other Processing functions cannot be used at that point
   window = new Window(); //create a window object
-  size(3840, 2160);
+  size(1920, 1080);
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
