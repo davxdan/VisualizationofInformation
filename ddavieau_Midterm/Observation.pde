@@ -1,25 +1,22 @@
 class Observation
 {
-  private int acousticSignal;
-  private float timeToFailure;
+  private String indexNumber;
+  private PVector coordinates;
   private boolean selected;
 
-  public Observation(JSONArray stats) {
-    acousticSignal = this.acousticSignal;
-    timeToFailure = this.timeToFailure;
+  public Observation(String indexNumber, PVector coordinates) {
+    indexNumber = this.indexNumber;
+    coordinates = this.coordinates;
     //stddev = this.stddev;
   }
   
-
-  
-  public int getAcousticSignal()
+  public String getIndexNumber()
   {
-    return acousticSignal;
+    return indexNumber;
   }
   
-  public float getTimeToFailure()
+  public PVector getCoordinates()
   {
-    return timeToFailure;
+    return coordinates;
   }
-  
 }

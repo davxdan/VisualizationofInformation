@@ -1,4 +1,4 @@
-//Look at ControlP5 //<>// //<>//
+//Look at ControlP5 //<>// //<>// //<>//
 import java.util.Map; // kvp mapping https://www.geeksforgeeks.org/map-interface-java-examples/
 Controller control;
 PImage myBackground;
@@ -9,7 +9,7 @@ int[] minMaxOrigins;
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
 ArrayList<Observation> stats;
-int [] xAcousticSignal; //<>// //<>//
+int [] xAcousticSignal; //<>// //<>// //<>//
 float [] yTimeToFailure;
 float xSequentialCoordinate;
 int recordCount;
@@ -52,10 +52,10 @@ void setup() { //Note: Variables declared within setup() are not accessible with
   }
   endShape();
   
-  gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>// //<>//
+  gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>// //<>// //<>//
   myBackground = get(); //<<<Snapshot the pixels into the myBackground variable for re-use in draw.
                         //It took me a whole day to figure this out... out my neck hurts.
- //<>// //<>//
+ //<>// //<>// //<>//
     for (int i=0; i<recordCount; i+=1) {//get sum of x and y for mean and other calcs
     xAcousticSignalSum+=earthquakeData.xdata[i];
     yTimeToFailureSum+=earthquakeData.ydata[i];
@@ -90,8 +90,8 @@ void draw() {
   }
 }
  
-void mouseMoved() { //<>// //<>//
-window.updatePos(mouseX, mouseY); //<>// //<>//
+void mouseMoved() { //<>// //<>// //<>//
+window.updatePos(mouseX, mouseY); //<>// //<>// //<>//
 }
 
 void mouseClicked()
