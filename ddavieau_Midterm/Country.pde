@@ -1,4 +1,4 @@
-class Country
+class Country  //holds data
 {
   private String code; //country code
   private String name; //country name

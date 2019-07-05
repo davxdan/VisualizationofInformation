@@ -4,6 +4,7 @@ class Controller
   private PApplet mainView; //A Processing window is a special type of Java program called a PApplet
   private ZoomView zoomView; //Creates a ZoomView  object
   private String selectedOrigin;
+  private int selectedIndex;
   public Controller(PApplet _mainView)
   {
     mainView = _mainView; //sets mainview
@@ -33,23 +34,38 @@ class Controller
     return model.getPlanes();
   }
   
-  public ArrayList<Country> getOrigins()
+  public ArrayList<Country> getOrigins() //getter
   {
     return model.getOrigins();
   }
   
-  public int[] getMinMaxOrigins()
+  public int[] getMinMaxOrigins() //getter
   {
     return new int[]{model.getMinOrigins(), model.getMaxOrigins()};
   }
   
-  public void setSelectedOrigin(String origin)
+  public void setSelectedOrigin(String origin) //setter
   {
     selectedOrigin = origin;
   }
   
-  public String getSelectedOrigin()
+  public String getSelectedOrigin() //getter
   {
     return selectedOrigin;
   }
+  
+  //public ArrayList<Observation> getIndexNumber()
+  //{
+  //  return model.getIndexNumber();
+  //}
+  
+  //public void setSelectedIndex(String indexNumber)
+  //{
+  //  selectedIndex = indexNumber;
+  //}
+  
+  //public int getSelectedIndex()
+  //{
+  //  return selectedIndex;
+  //}
 }
