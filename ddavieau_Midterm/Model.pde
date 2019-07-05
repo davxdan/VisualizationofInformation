@@ -1,6 +1,7 @@
 class Model //loads countries and airplane data
 {
   private static final String BASE_API = "https://opensky-network.org/api/states/all?";
+  private ArrayList<Observation> observations;
   private ArrayList<Plane> planes; //Stores airplane attributes including vector. Difference (ArrayList and HashMap) ArrayList only stores one object. HashMap stores two objects (key and value)
   private Controller controller; //Custom Class
   private float minAltitude;
@@ -12,8 +13,9 @@ class Model //loads countries and airplane data
   
   public Model(Controller _controller)
   {
+    observations = new ArrayList<Observation>();
     planes = new ArrayList<Plane>(); //from Custom Class
-    converter = new Converter(myBackground.width, myBackground.height); //from Custom Class
+    converter = new Converter(width, height); //from Custom Class
     controller = _controller; //underscore means only this one. Alternative couldbe this.converter
     minAltitude = Float.MAX_VALUE;
     maxAltitude = Float.MIN_VALUE;
@@ -34,7 +36,8 @@ class Model //loads countries and airplane data
   public void updateCoordinates(float minLat, float minLon, float maxLat, float maxLon) //calls api and gets coords
   {
     println("Loading data");
-    planes.clear();
+    planes.clear(); 
+    observations.clear();
     currentOrigins.clear();
     for(Map.Entry entry : countries.entrySet())
     {
