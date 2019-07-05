@@ -4,18 +4,12 @@ Controller control;
 PImage myBackground;
 Window window; //creates a window object and returns it's corners based on location
 Converter converter;
-
-///////////////////////////////////
 ArrayList<Country> origins; //Arraylist allows for dynamic size unlike simple int []. https://www.youtube.com/watch?v=VE0HeWFaAIQ
-ArrayList<Observation> stats;
 int[] minMaxOrigins;
-///////////////////////////////////
-
-
 
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
-int [] xAcousticSignal; //<>// //<>// //<>// //<>//
+int [] xAcousticSignal; //<>//
 float [] yTimeToFailure;
 float xSequentialCoordinate;
 int recordCount;
@@ -28,19 +22,12 @@ float yTimeToFailureSum;
 float xAcousticSignalMean;
 float yTimeToFailureMean;
 
-
 void settings() { //runs before the sketch has been set up, so other Processing functions cannot be used at that point
   window = new Window(); //create a window object
   size(1920, 1080);
   converter = new Converter(width, height);
   earthquakeData = new Dataloader("plotme.csv", "header", xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
-  
-  
-  ///////////////////////////////////
   origins = new ArrayList<Country>();
-  ///////////////////////////////////
-  
-  
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
@@ -82,9 +69,6 @@ void setup() { //Note: Variables declared within setup() are not accessible with
 void draw() {
   image(myBackground, 0, 0);
   window.drawWindow();
-  
-  
-  //////////////////////////////////////////////////////////////////////////////////
   for(int i = 0; i < origins.size(); i++) {
     Country c = origins.get(i); //get the country data from origins into the Country c arraylist
     PVector latlon = c.getPosition(); //get the plane;s position
@@ -102,23 +86,19 @@ void draw() {
     fill(0);
     textAlign(CENTER, CENTER);
     text(c.getOrigins(), xy.x, xy.y);
-    /////////////////////////////////////////////////////////////////////////////////
-    
   }
 }
  
-void mouseMoved() { //<>// //<>// //<>// //<>//
-window.updatePos(mouseX, mouseY); //<>// //<>// //<>// //<>//
+void mouseMoved() { //<>//
+window.updatePos(mouseX, mouseY); //<>//
 }
 
 void mouseClicked()
 {
   PVector windowCorner = window.getWindowCorner();
   cutImage(windowCorner);
-  ///////////////////////////////////////////
   origins = control.getOrigins();
   minMaxOrigins = control.getMinMaxOrigins();
-  ///////////////////////////////////////////
 }
 
 void cutImage(PVector windowCorner) {

@@ -4,8 +4,6 @@ class Controller
   private PApplet mainView; //A Processing window is a special type of Java program called a PApplet
   private ZoomView zoomView; //Creates a ZoomView  object
   private String selectedOrigin;
-  //private int acousticSignal;
-  //private float timeToFailure;
   public Controller(PApplet _mainView)
   {
     mainView = _mainView; //sets mainview

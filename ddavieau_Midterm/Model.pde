@@ -2,10 +2,6 @@ class Model //loads countries and airplane data
 {
   private static final String BASE_API = "https://opensky-network.org/api/states/all?";
   private ArrayList<Plane> planes; //Difference (ArrayList and HashMap) ArrayList only stores one object. HashMap stores two objects (key and value)
-  ////////////////////////////////////////////
-  private HashMap<String, Observation> observations; //Key value pairs; HashMap cannot contain duplicate keys,allows null values and key,is unordered
-  private ArrayList<Observation> stats; //ArrayList only stores one object.
-  private int indexNumber;
   private Controller controller; //Custom Class
   private float minAltitude;
   private float maxAltitude;
@@ -15,10 +11,6 @@ class Model //loads countries and airplane data
   private int maxOrigin;
   
   public Model(Controller _controller) {
-    ////////////////////////////////////////////
-    stats = new ArrayList<Observation>();
-    observations = new HashMap<String, Observation>(); //HashMap cannot contain duplicate keys,allows null values and key,is unordered
-    
     planes = new ArrayList<Plane>(); //from Custom Class
     converter = new Converter(width, height); //from Custom Class
     controller = _controller; //underscore means only this one. Alternative couldbe this.converter
@@ -28,15 +20,6 @@ class Model //loads countries and airplane data
     maxOrigin = Integer.MIN_VALUE;
     currentOrigins = new ArrayList<Country>();
     countries = new HashMap<String, Country>(); //HashMap cannot contain duplicate keys,allows null values and key,is unordered
-    
-    ////////////////////////////////////////////
-    Table o = loadTable("plotme.csv");
-    for(int i = 1; i < o.getRowCount(); i++)
-    {
-      TableRow r = o.getRow(i);
-      observations.put(r.getString(0), new Observation(r.getString(0), new PVector (r.getFloat(1), r.getFloat(2))));
-    }
-    println(observations.size() + " observations loaded.");
     
     Table t = loadTable("countries.csv");
     for(int i = 1; i < t.getRowCount(); i++)
@@ -50,12 +33,7 @@ class Model //loads countries and airplane data
   public void updateCoordinates(float minLat, float minLon, float maxLat, float maxLon) {
     println("Loading data");
     planes.clear(); 
-    observations.clear();
     currentOrigins.clear();
-    stats.clear();
-    for(Map.Entry entry : observations.entrySet()) {
-      ((Observation)entry.getValue()).getCoordinates();
-    }
     
     for(Map.Entry entry : countries.entrySet()) {
       ((Country)entry.getValue()).resetOrigins();
@@ -134,14 +112,8 @@ class Model //loads countries and airplane data
     return maxOrigin;
   }
   
-  //////////////////////////////////////
-  public ArrayList<Observation> getStats() {
-    return stats;
-  }
-  
   public ArrayList<Country> getOrigins()
   {
     return currentOrigins;
   }
-
 }

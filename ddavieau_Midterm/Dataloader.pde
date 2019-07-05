@@ -8,7 +8,7 @@ class Dataloader {
   int recordCount;
    
   //Constructors initialize but do not return 
-  Dataloader(String filename, String header,int[] xdata,float[] ydata) {
+  public Dataloader(String filename, String header,int[] xdata,float[] ydata) {
     this.filename = filename;
     this.header = header;
     this.table = loadTable(filename, header);
