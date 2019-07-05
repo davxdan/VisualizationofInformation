@@ -1,5 +1,5 @@
 //Look at ControlP5 //<>//
-PImage mybackground;
+PImage myBackground;
 import java.util.Map; // kvp mapping https://www.geeksforgeeks.org/map-interface-java-examples/
 int [] xAcousticSignal; //<>//
 float [] yTimeToFailure;
@@ -18,6 +18,7 @@ Dataloader data; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
 
 void settings() { //runs before the sketch has been set up, so other Processing functions cannot be used at that point
+
   window = new Window(); //create a window object
   size(1920, 1080);
 }
@@ -31,8 +32,7 @@ void setup() { //Note: Variables declared within setup() are not accessible with
   recordCount = data.xdata.length;
   gridX=int(recordCount/sketchWidth);
   gridY=ceil(max(data.ydata)*100);
-  mybackground = loadImage("mybackground.jpg");
-  
+   
   beginShape(POINTS);
   for (int i=0; i<recordCount; i+=1,xSequentialCoordinate+=(sketchWidth/recordCount)) {
     stroke(53, 76, 161);
@@ -45,21 +45,27 @@ void setup() { //Note: Variables declared within setup() are not accessible with
   endShape();
    
   gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>//
-   //<>// //<>//
+  myBackground = get();
+ //<>//
   for (int i=0; i<recordCount; i+=1) {
     xAcousticSignalSum+=data.xdata[i];
     yTimeToFailureSum+=data.ydata[i];
   }
+  
   yTimeToFailureMean = yTimeToFailureSum/recordCount;
   println(yTimeToFailureMean);
 }
 
+
+
+
+
 void draw() {
-  image(mybackground, 0, 0);
+  //PImage myBackground = get();
+  image(myBackground, 0, 0);
   window.drawWindow();
 }
   
 void mouseMoved() { //<>// //<>//
-  window.updatePos(mouseX, mouseY); //<>//
-  image(mybackground, 0, 0);
+window.updatePos(mouseX, mouseY); //<>//
 }
