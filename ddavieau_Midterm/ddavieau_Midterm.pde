@@ -95,24 +95,22 @@ void draw() {
   }
   
     //observationData
-  //  for(int i = 0; i < observationData.size(); i++) {
-  //  Observation ix = observationData.get(i); 
-  //  PVector latlon = ix.getCoordinates(); 
-  //  PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
-  //  fill(255);
-  //  int selectedIndexNumber = control.getSelectedIndex();
-  //  strokeWeight(1);
-  //  if(selectedIndexNumber != null && selectedIndexNumber.equals(ix.getName())) {
-  //    fill(255, 0, 0);
-  //    strokeWeight(3);
-  //  }
-  //  stroke(0);
-  //  float radius = map(ix.getIndexNumber());
-  //  ellipse(xy.x, xy.y, radius, radius);
-  //  fill(0);
-  //  textAlign(CENTER, CENTER);
-  //  text(ix.getIndexNumber(), xy.x, xy.y);
-  //}
+    for(int i = 0; i < observationData.size(); i++) {
+    Observation ix = observationData.get(i); 
+    PVector latlon = ix.getCoordinates(); 
+    PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
+    fill(255);
+    int selectedIndexNumber = control.getSelectedIndex();
+    strokeWeight(1);
+    stroke(0);
+    fill(255, 0, 0);
+    strokeWeight(3);
+    float radius = map(ix.getIndexNumber(),minMaxOrigins[0], minMaxOrigins[1], 20, 40);
+    ellipse(xy.x, xy.y, radius, radius);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text(ix.getIndexNumber(), xy.x, xy.y);
+  }
 }
  
 void mouseMoved() {
@@ -124,6 +122,7 @@ void mouseClicked()
   PVector windowCorner = window.getWindowCorner();
   cutImage(windowCorner);
   origins = control.getOrigins();
+  observationData = control.getIndexNumber();
   minMaxOrigins = control.getMinMaxOrigins();
 }
 

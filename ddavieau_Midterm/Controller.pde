@@ -55,9 +55,9 @@ class Controller
     return selectedOrigin;
   }
   
-  //  public ArrayList<Observation> getIndexNumber() {
-  //  return model.getIndexNumber();
-  //}
+    public ArrayList<Observation> getIndexNumber() {
+    return model.getIndexNumber();
+  }
   
     public void setSelectedIndex(int index) //setter
   {
