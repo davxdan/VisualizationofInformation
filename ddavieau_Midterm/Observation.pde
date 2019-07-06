@@ -1,22 +1,15 @@
-class Observation //holds data
+class Observation  //holds data
 {
   private int indexNumber;
-    
-  public Observation(int _indexNumber)
-  {
+  private PVector coordinates; 
+  
+  public Observation(int _indexNumber, PVector _coordinates) {
     indexNumber = _indexNumber;
+    coordinates = _coordinates;
   }
   
-  public int getIndexNumber()
+  public PVector getCoordinates()
   {
-    return indexNumber;
-  }
-  public void resetIndexNumber()
-  {
-    indexNumber = 0;
-  }
-  public void addIndexNumber()
-  {
-    indexNumber++;
+    return coordinates;
   }
 }

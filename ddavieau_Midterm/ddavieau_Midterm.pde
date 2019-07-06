@@ -1,11 +1,11 @@
 //Look at ControlP5  //<>//
-import java.util.Map; // kvp mapping https://www.geeksforgeeks.org/map-interface-java-examples/
+import java.util.Map;
 Controller control;
 PImage myBackground;
 Window window; //creates a window object and returns it's corners based on location
 Converter converter;
 ArrayList<Country> origins;//Arraylist allows for dynamic size unlike simple int []. https://www.youtube.com/watch?v=VE0HeWFaAIQ
-ArrayList<Observation> indexNumbers;//////////////////Modeling Country Only for Index Number
+ArrayList<Observation> observationData;//////////////////Modeling Country Only for Index Number
 int[] minMaxOrigins;
 
 Dataloader earthquakeData; //declare a Dataloader object
@@ -30,7 +30,7 @@ void settings() { //runs before the sketch has been set up, so other Processing 
   converter = new Converter(width, height);
   earthquakeData = new Dataloader("plotme.csv", "header", zIndexNumber, xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
   origins = new ArrayList<Country>();
-  indexNumbers = new ArrayList<Observation>();
+  observationData = new ArrayList<Observation>();
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
@@ -74,7 +74,7 @@ void draw() {
   image(myBackground, 0, 0);
   window.drawWindow();
   
-  //Origins
+  //origins
   for(int i = 0; i < origins.size(); i++) {
     Country c = origins.get(i); //get the country data from origins into the Country c arraylist
     PVector latlon = c.getPosition(); //get the plane;s position
@@ -94,23 +94,25 @@ void draw() {
     text(c.getOrigins(), xy.x, xy.y);
   }
   
-  //IndexNumbers/////////////////////////////////////////
-  //  for(int i = 0; i < indexNumbers.size(); i++) {
-  //  Observation ix = indexNumbers.get(i); 
-  //  fill(255);
-  //  int selectedIndexNumber = control.getSelectedIndex();
-  //  strokeWeight(1);
-  //  if(selectedIndexNumber != null && selectedIndexNumber.equals(ix.getName())) {
-  //    fill(255, 0, 0);
-  //    strokeWeight(3);
-  //  }
-  //  stroke(0);
-  //  float radius = map(ix.getIndexNumber());
-  //  ellipse(xy.x, xy.y, radius, radius);
-  //  fill(0);
-  //  textAlign(CENTER, CENTER);
-  //  text(ix.getIndexNumber(), xy.x, xy.y);
-  //}
+    //observationData
+    for(int i = 0; i < observationData.size(); i++) {
+    Observation ix = observationData.get(i); 
+    PVector latlon = ix.getCoordinates(); 
+    PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
+    fill(255);
+    int selectedIndexNumber = control.getSelectedIndex();
+    strokeWeight(1);
+    if(selectedIndexNumber != null && selectedIndexNumber.equals(ix.getName())) {
+      fill(255, 0, 0);
+      strokeWeight(3);
+    }
+    stroke(0);
+    float radius = map(ix.getIndexNumber());
+    ellipse(xy.x, xy.y, radius, radius);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text(ix.getIndexNumber(), xy.x, xy.y);
+  }
 }
  
 void mouseMoved() { //<>//
