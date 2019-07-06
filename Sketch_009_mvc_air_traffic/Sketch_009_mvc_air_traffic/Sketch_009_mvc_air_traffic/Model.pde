@@ -13,7 +13,7 @@ class Model //loads countries and airplane data
   public Model(Controller _controller)
   {
     planes = new ArrayList<Plane>(); //from Custom Class
-    converter = new Converter(width, height); //from Custom Class
+    converter = new Converter(worldMap.width, worldMap.height); //from Custom Class
     controller = _controller; //underscore means only this one. Alternative couldbe this.converter
     minAltitude = Float.MAX_VALUE;
     maxAltitude = Float.MIN_VALUE;

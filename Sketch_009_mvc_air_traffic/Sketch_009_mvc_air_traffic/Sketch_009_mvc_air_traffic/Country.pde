@@ -1,8 +1,8 @@
-class Country  //holds data
+class Country //just holds data and returns it when asked
 {
-  private String code; //country code
-  private String name; //country name
-  private PVector position; 
+  private String code;
+  private String name;
+  private PVector position;
   private int origins;
   
   public Country(String _code, String _name, PVector _position)
