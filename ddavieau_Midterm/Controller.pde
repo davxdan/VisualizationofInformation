@@ -55,6 +55,11 @@ class Controller
     return selectedOrigin;
   }
   
+  public void updateObservations(ArrayList<Observation> observations)
+  {
+    zoomView.updateObservations(observations);
+  }
+  
     public ArrayList<Observation> getIndexNumber() {
     return model.getIndexNumber();
   }

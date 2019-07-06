@@ -6,6 +6,7 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
   private static final int PLANE_DIAMETER = 10;
   private PImage zoomImage;
   private ArrayList<Plane> planes;
+  private ArrayList<Observation> observations;
   private PVector corner;
   private float minAltitude;
   private float maxAltitude;
@@ -17,6 +18,7 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
   {
     control = _control;
     planes = new ArrayList<Plane>();
+    observations = new ArrayList<Observation>();////Leftoddhere
     minColor = color(255,237,160);
     maxColor = color(240,59,32);
   }
