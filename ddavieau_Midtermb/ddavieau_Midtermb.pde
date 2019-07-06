@@ -93,5 +93,5 @@ window.updatePos(mouseX, mouseY);
 
 void mouseClicked()
 {
-  
-} //<>// //<>//
+
+}  //<>//
