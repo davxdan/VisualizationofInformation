@@ -1,4 +1,4 @@
-//Look at ControlP5  //<>//
+//Look at ControlP5 
 import java.util.Map;
 Controller control;
 PImage myBackground;
@@ -11,7 +11,7 @@ int[] minMaxOrigins;
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
 int [] zIndexNumber;
-int [] xAcousticSignal; //<>//
+int [] xAcousticSignal;
 float [] yTimeToFailure;
 float xSequentialCoordinate;
 int recordCount;
@@ -54,10 +54,10 @@ void setup() { //Note: Variables declared within setup() are not accessible with
   }
   endShape();
   
-  gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>// //<>// //<>// //<>//
+  gridlines = new Gridplotter(sketchWidth, sketchHeight, gridX, gridY, color(110, 110, 120)); //<>// //<>// //<>//
   myBackground = get(); //<<<Snapshot the pixels into the myBackground variable for re-use in draw.
                         //It took me a whole day to figure this out... out my neck hurts.
- //<>//
+
     for (int i=0; i<recordCount; i+=1) {//get sum of x and y for mean and other calcs
     xAcousticSignalSum+=earthquakeData.xdata[i];
     yTimeToFailureSum+=earthquakeData.ydata[i];
@@ -80,13 +80,13 @@ void draw() {
     PVector latlon = c.getPosition(); //get the plane;s position
     PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
     fill(255);
-    String selOrigin = control.getSelectedOrigin();
+    String selOrigin = control.getSelectedOrigin();//The country name
     strokeWeight(1);
     if(selOrigin != null && selOrigin.equals(c.getName())) {
       fill(255, 0, 0);
       strokeWeight(3);
     }
-    stroke(0);
+    stroke(0); //<>//
     float radius = map(c.getOrigins(), minMaxOrigins[0], minMaxOrigins[1], 20, 40);
     ellipse(xy.x, xy.y, radius, radius);
     fill(0);
@@ -95,28 +95,28 @@ void draw() {
   }
   
     //observationData
-    for(int i = 0; i < observationData.size(); i++) {
-    Observation ix = observationData.get(i); 
-    PVector latlon = ix.getCoordinates(); 
-    PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
-    fill(255);
-    int selectedIndexNumber = control.getSelectedIndex();
-    strokeWeight(1);
-    if(selectedIndexNumber != null && selectedIndexNumber.equals(ix.getName())) {
-      fill(255, 0, 0);
-      strokeWeight(3);
-    }
-    stroke(0);
-    float radius = map(ix.getIndexNumber());
-    ellipse(xy.x, xy.y, radius, radius);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text(ix.getIndexNumber(), xy.x, xy.y);
-  }
+  //  for(int i = 0; i < observationData.size(); i++) {
+  //  Observation ix = observationData.get(i); 
+  //  PVector latlon = ix.getCoordinates(); 
+  //  PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
+  //  fill(255);
+  //  int selectedIndexNumber = control.getSelectedIndex();
+  //  strokeWeight(1);
+  //  if(selectedIndexNumber != null && selectedIndexNumber.equals(ix.getName())) {
+  //    fill(255, 0, 0);
+  //    strokeWeight(3);
+  //  }
+  //  stroke(0);
+  //  float radius = map(ix.getIndexNumber());
+  //  ellipse(xy.x, xy.y, radius, radius);
+  //  fill(0);
+  //  textAlign(CENTER, CENTER);
+  //  text(ix.getIndexNumber(), xy.x, xy.y);
+  //}
 }
  
-void mouseMoved() { //<>//
-window.updatePos(mouseX, mouseY); //<>//
+void mouseMoved() {
+window.updatePos(mouseX, mouseY);
 }
 
 void mouseClicked()
