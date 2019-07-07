@@ -17,8 +17,8 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
   public ZoomView(Controller _control)
   {
     control = _control;
-    planes = new ArrayList<Plane>();
-    observations = new ArrayList<Observation>();////Leftoddhere
+    //planes = new ArrayList<Plane>();
+    observations = new ArrayList<Observation>();
     minColor = color(255,237,160);
     maxColor = color(240,59,32);
   }
@@ -27,8 +27,7 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
   {
     this.size(VIEW_WIDTH, VIEW_HEIGHT);
   }
-  
-  public void draw()
+    public void draw()
   {
     this.background(0);
     if(zoomImage != null)
@@ -36,34 +35,34 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
       try
       {
         this.image(zoomImage, 0, 0);
-        if(!planes.isEmpty())
+        if(!observations.isEmpty())
         {
-          Plane selectedPlane = null;
+          Observation selectedObservation = null;
           PVector selectedXY = null;
           int selectedColor = 0;
-          for(Plane p : planes)
+          for(Observation o : observations)
           {
-            PVector pos = p.getPosition();
+            PVector pos = o.getCoordinates(); //<<Work on this
             PVector global = converter.convert2Pixels(pos.x, pos.y);
             float x = map(global.x, corner.x, corner.x + Window.WINDOW_SIZE_PX, 0, VIEW_WIDTH);  
             float y = map(global.y, corner.y, corner.y + Window.WINDOW_SIZE_PX, 0, VIEW_HEIGHT);
-            float altitude = p.getAltitude();
-            int altColor = lerpColor(minColor, maxColor, altitude / (maxAltitude - minAltitude));  
+            float altitude = 10000;//<<Work on this
+            int altColor = lerpColor(minColor, maxColor, 5000 / (500));  
             
-            float diameter = PLANE_DIAMETER;
-            if(p.isSelected())
+            float diameter = 10;
+            if(o.isSelected())
             {
-              selectedPlane = p;
+              selectedObservation = o;
               selectedXY = new PVector(x, y);
               selectedColor = altColor;
             }
             fill(altColor);
             ellipse(x, y, diameter, diameter);
           }
-          if(selectedPlane != null && selectedXY != null)
+          if(selectedObservation != null && selectedXY != null)
           {
-            control.setSelectedOrigin(selectedPlane.getOrigin());
-              float diameter = PLANE_DIAMETER * 1.5;
+            control.setSelectedIndex(selectedObservation.getIndexNumber());
+              float diameter = 10 * 1.5;
               int widthPopup = 150;
               int heightPopup = 50;
               float x = selectedXY.x;
@@ -76,9 +75,9 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
                 fill(255);
                 rect(0, 0, widthPopup, heightPopup);
                 fill(0);
-                text("ID: " + selectedPlane.getIcao24(), 5, 15);
-                text("Alt: " + selectedPlane.getAltitude() + " Mts", 5, 30);
-                text("Orig: " + selectedPlane.getOrigin(), 5, 45);
+                //text("ID: " + selectedObservation.getIcao24(), 5, 15);
+                //text("Alt: " + selectedPlane.getAltitude() + " Mts", 5, 30);
+                //text("Orig: " + selectedPlane.getOrigin(), 5, 45);
               popMatrix();
               fill(selectedColor);
               ellipse(x, y, diameter, diameter);
@@ -92,6 +91,70 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
       }
     }
   }
+  //public void draw()
+  //{
+  //  this.background(0);
+  //  if(zoomImage != null)
+  //  {
+  //    try
+  //    {
+  //      this.image(zoomImage, 0, 0);
+  //      if(!planes.isEmpty())
+  //      {
+  //        Plane selectedPlane = null;
+  //        PVector selectedXY = null;
+  //        int selectedColor = 0;
+  //        for(Plane p : planes)
+  //        {
+  //          PVector pos = p.getPosition();
+  //          PVector global = converter.convert2Pixels(pos.x, pos.y);
+  //          float x = map(global.x, corner.x, corner.x + Window.WINDOW_SIZE_PX, 0, VIEW_WIDTH);  
+  //          float y = map(global.y, corner.y, corner.y + Window.WINDOW_SIZE_PX, 0, VIEW_HEIGHT);
+  //          float altitude = p.getAltitude();
+  //          int altColor = lerpColor(minColor, maxColor, altitude / (maxAltitude - minAltitude));  
+            
+  //          float diameter = PLANE_DIAMETER;
+  //          if(p.isSelected())
+  //          {
+  //            selectedPlane = p;
+  //            selectedXY = new PVector(x, y);
+  //            selectedColor = altColor;
+  //          }
+  //          fill(altColor);
+  //          ellipse(x, y, diameter, diameter);
+  //        }
+  //        if(selectedPlane != null && selectedXY != null)
+  //        {
+  //          control.setSelectedOrigin(selectedPlane.getOrigin());
+  //            float diameter = PLANE_DIAMETER * 1.5;
+  //            int widthPopup = 150;
+  //            int heightPopup = 50;
+  //            float x = selectedXY.x;
+  //            float y = selectedXY.y;
+  //            float posPopupX = x - (x > (VIEW_WIDTH - widthPopup) ? widthPopup : -10);
+  //            float posPopupY = y - (y > (VIEW_HEIGHT - heightPopup) ? heightPopup : -10);
+  //            pushMatrix();
+  //              translate(posPopupX, posPopupY);
+  //              stroke(0);
+  //              fill(255);
+  //              rect(0, 0, widthPopup, heightPopup);
+  //              fill(0);
+  //              text("ID: " + selectedPlane.getIcao24(), 5, 15);
+  //              text("Alt: " + selectedPlane.getAltitude() + " Mts", 5, 30);
+  //              text("Orig: " + selectedPlane.getOrigin(), 5, 45);
+  //            popMatrix();
+  //            fill(selectedColor);
+  //            ellipse(x, y, diameter, diameter);
+  //        }
+  //      }
+  //      drawLegend();
+  //    }
+  //    catch(Exception e)
+  //    {
+        
+  //    }
+  //  }
+  //}
   
   public void drawLegend()
   {
@@ -111,11 +174,35 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
       translate(10, i * 20);
       rect(0, 0, 80, 20);
       fill(0);
-      text("<" + (minAltitude + (altValue * (maxAltitude - minAltitude))), 5, 15);
+      //text("<" + (minAltitude + (altValue * (maxAltitude - minAltitude))), 5, 15);
       popMatrix();
     }
     popMatrix();
   }
+  
+  //  public void drawLegend()
+  //{
+  //  fill(200);
+  //  rect(10, 10, 80, 20);
+  //  fill(0);
+  //  text("Altitude (Mts)", 15, 25);
+  //  pushMatrix();
+  //  translate(0, 30);
+  //  for(int i = 0; i < 5; i++)
+  //  {
+  //    stroke(0);
+  //    float altValue = 1f - (float(i) / 5.f);
+  //    int altColor = lerpColor(minColor, maxColor, altValue);
+  //    fill(altColor);
+  //    pushMatrix();
+  //    translate(10, i * 20);
+  //    rect(0, 0, 80, 20);
+  //    fill(0);
+  //    text("<" + (minAltitude + (altValue * (maxAltitude - minAltitude))), 5, 15);
+  //    popMatrix();
+  //  }
+  //  popMatrix();
+  //}
   public void setZoomImage(PImage _zoomImage, PVector _corner)
   {
     corner = _corner;
@@ -123,34 +210,63 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
     zoomImage.resize(VIEW_WIDTH, VIEW_HEIGHT);
   }
   
-  public void updatePlanes(ArrayList<Plane> _planes, float _minAltitude, float _maxAltitude)
+  //public void updatePlanes(ArrayList<Plane> _planes, float _minAltitude, float _maxAltitude)
+  //{
+  //  planes = _planes;
+  //  minAltitude = _minAltitude;
+  //  maxAltitude = _maxAltitude;
+  //}
+  
+   public void updateObservations(ArrayList<Observation> _observations)
   {
-    planes = _planes;
-    minAltitude = _minAltitude;
-    maxAltitude = _maxAltitude;
+    observations = _observations;
   }
   
   public void mouseMoved()
   {
-    if(!planes.isEmpty())
+    if(!observations.isEmpty())
     {
       control.setSelectedOrigin(null);
-      for(Plane p : planes)
+      for(Observation o : observations)
       {
-        p.setSelected(false);
+        o.setSelected(false);
       }
-      for(Plane p : planes)
+      for(Observation o : observations)
       {
-        PVector pos = p.getPosition();
+        PVector pos = o.getCoordinates();
         PVector global = converter.convert2Pixels(pos.x, pos.y);
         float x = map(global.x, corner.x, corner.x + Window.WINDOW_SIZE_PX, 0, VIEW_WIDTH);  
         float y = map(global.y, corner.y, corner.y + Window.WINDOW_SIZE_PX, 0, VIEW_HEIGHT);
         float distance = dist(mouseX, mouseY, x, y);
-        if(distance <= PLANE_DIAMETER)
+        if(distance <= 10)
         {
-          p.setSelected(true);
+          o.setSelected(true);
         }
       }
     }
   }
+  
+  //public void mouseMoved()
+  //{
+  //  if(!planes.isEmpty())
+  //  {
+  //    control.setSelectedOrigin(null);
+  //    for(Plane p : planes)
+  //    {
+  //      p.setSelected(false);
+  //    }
+  //    for(Plane p : planes)
+  //    {
+  //      PVector pos = p.getPosition();
+  //      PVector global = converter.convert2Pixels(pos.x, pos.y);
+  //      float x = map(global.x, corner.x, corner.x + Window.WINDOW_SIZE_PX, 0, VIEW_WIDTH);  
+  //      float y = map(global.y, corner.y, corner.y + Window.WINDOW_SIZE_PX, 0, VIEW_HEIGHT);
+  //      float distance = dist(mouseX, mouseY, x, y);
+  //      if(distance <= PLANE_DIAMETER)
+  //      {
+  //        p.setSelected(true);
+  //      }
+  //    }
+  //  }
+  //}
 }

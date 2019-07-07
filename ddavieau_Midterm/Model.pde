@@ -111,8 +111,8 @@ class Model //loads countries and airplane data
     {
       println("Is null");
     }
-    controller.updatePlanes(planes);
-    println(planes.size() + "planes loaded");
+    //controller.updatePlanes(planes);
+    //println(planes.size() + "planes loaded");
   }
   
   public ArrayList<Plane> getPlanes()

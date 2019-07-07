@@ -24,22 +24,15 @@ class Plane //Instances of this will store airplane attributes
   public Plane(JSONArray data)
   {
     icao24= data.getString(0);
-    //callsign= data.getString(1);
+
     origin_country= data.getString(2);
-    //time_position= data.getInt(3);
-    //last_contact= data.getInt(4);
+
     longitude= data.isNull(5) ? -999 : data.getFloat(5);
     latitude= data.isNull(6) ? -999 : data.getFloat(6);
     geo_altitude= data.isNull(7) ? -1 : data.getFloat(7);
-    //on_ground= data.getBoolean(8);
+
     velocity= data.isNull(9) ? -1 : data.getFloat(9);  
-    //true_track= data.getFloat(10);
-    //vertical_rate= data.getFloat(11);
-    //sensors= data.getIntArray(12);
-    //baro_altitude= data.isNull(13) ? -1 : data.getFloat(13);
-    //squawk= data.isNull(14) ? "" : data.getString(14);
-    //spi= data.getBoolean(15);
-    //position_source= data.getInt(16);
+
     if(latitude != -999 && longitude != -999)
     {
       position = new PVector(latitude, longitude);
