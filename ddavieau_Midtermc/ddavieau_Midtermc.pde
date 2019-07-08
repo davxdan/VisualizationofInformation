@@ -4,7 +4,7 @@ Controller control;
 PImage myBackground;
 Window window; //creates a window object and returns it's corners based on location
 Converter converter;
-ArrayList<Observation> observationData;
+public ArrayList<Observation> observationData;
 
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
@@ -28,6 +28,7 @@ void settings() { //runs before the sketch has been set up, so other Processing 
   converter = new Converter(width, height);
   earthquakeData = new Dataloader("plotme.csv", "header", zIndexNumber, xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
   observationData = new ArrayList<Observation>();
+
 }
 
 void setup() { //Note: Variables declared within setup() are not accessible within other functions, including draw().
@@ -85,6 +86,10 @@ void draw() {
     fill(0);
     textAlign(CENTER, CENTER);
     text(ix.getIndexNumber(), xy.x, xy.y);
+    
+    for(Observation o: observationData){
+     System.out.println(o) ;
+    }
   }
 }
  

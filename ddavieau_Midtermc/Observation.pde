@@ -37,4 +37,11 @@ class Observation  //holds data
   {
     return selected;
   }
+  
+  @Override
+  public String toString(){
+    return "{"+indexNumber +", "+ acousticSignal + ", " +timeToFailure+ "}";
+  }
+  
+  
 }

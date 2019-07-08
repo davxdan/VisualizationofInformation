@@ -17,7 +17,10 @@ class Model {
     }
     
     println(observations.size() + " observations loaded.");
-  }
+    for(Map.Entry<String,Observation> val :observations.entrySet()){
+     System.out.println(val.getKey() + ", " + val.getValue()); 
+    }
+}
   
   public void updateCoordinates(float minLat, float minLon, float maxLat, float maxLon) {
     println("Loading data");
