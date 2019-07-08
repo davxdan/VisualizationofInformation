@@ -37,6 +37,10 @@ class Observation  //holds data
   {
     return selected;
   }
+  public void addIndexNumber()
+  {
+    indexNumber++;
+  }
   
   @Override
   public String toString(){
