@@ -1,15 +1,25 @@
+//Professor Ibarra,
+
+//I gave this my all. About 30 hours. I learned alot, I could do better given time.
+
+//Sorry to give bs excuses but here we go; 
+  //I have Capstone project presentation to prepare for this week
+  // I am also in the middle switching jobs, selling my home and moving long distance to DC
+
+
+
+
 //Look at ControlP5 
 import java.util.Map;
-Controller control;
-PImage myBackground;
-Window window; //creates a window object and returns it's corners based on location
-Converter converter;
-ArrayList<Country> origins;//Arraylist allows for dynamic size unlike simple int []. https://www.youtube.com/watch?v=VE0HeWFaAIQ
-ArrayList<Observation> observationData;//////////////////Modeling Country Only for Index Number
-int[] minMaxOrigins;
 
+Controller control;
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
+Window window; //creates a window object and returns it's corners based on location
+Converter converter;
+
+PImage myBackground;
+ArrayList<Observation> observationData;
 int [] zIndexNumber;
 int [] xAcousticSignal;
 float [] yTimeToFailure;
@@ -29,7 +39,6 @@ void settings() { //runs before the sketch has been set up, so other Processing 
   size(1920, 1080);
   converter = new Converter(width, height);
   earthquakeData = new Dataloader("plotme.csv", "header", zIndexNumber, xAcousticSignal, yTimeToFailure); //instantiate a Dataloader object with name acousticSignal
-  origins = new ArrayList<Country>();
   observationData = new ArrayList<Observation>();
 }
 
@@ -73,29 +82,7 @@ void setup() { //Note: Variables declared within setup() are not accessible with
 void draw() {
   image(myBackground, 0, 0);
   window.drawWindow();
-  
-  //origins
-  for(int i = 0; i < origins.size(); i++) {
-    Country c = origins.get(i); //get the country data from origins into the Country c arraylist
-    PVector latlon = c.getPosition(); //get the plane;s position
-    PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
-    fill(255);
-    String selOrigin = control.getSelectedOrigin();//The country name
-    strokeWeight(1);
-    if(selOrigin != null && selOrigin.equals(c.getName())) {
-      fill(255, 0, 0);
-      strokeWeight(3);
-    }
-    stroke(0); //<>//
-    float radius = map(c.getOrigins(), minMaxOrigins[0], minMaxOrigins[1], 20, 40);
-    ellipse(xy.x, xy.y, radius, radius);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text(c.getOrigins(), xy.x, xy.y);
-  }
-  
-    //observationData
-    for(int i = 0; i < observationData.size(); i++) {
+  for(int i = 0; i < observationData.size(); i++) { //<>//
     Observation ix = observationData.get(i); 
     PVector latlon = ix.getCoordinates(); 
     PVector xy = converter.convert2Pixels(latlon.x, latlon.y);
@@ -105,11 +92,15 @@ void draw() {
     stroke(0);
     fill(255, 0, 0);
     strokeWeight(3);
-    float radius = map(ix.getIndexNumber(),minMaxOrigins[0], minMaxOrigins[1], 20, 40);
+    float radius = map(ix.getIndexNumber(),1, 1, 20, 40);
     ellipse(xy.x, xy.y, radius, radius);
     fill(0);
     textAlign(CENTER, CENTER);
     text(ix.getIndexNumber(), xy.x, xy.y);
+    
+    for(Observation o: observationData){
+     System.out.println(o) ;
+    }
   }
 }
  
@@ -117,13 +108,11 @@ void mouseMoved() {
 window.updatePos(mouseX, mouseY);
 }
 
-void mouseClicked()
-{
+void mouseClicked() {
   PVector windowCorner = window.getWindowCorner();
   cutImage(windowCorner);
-  origins = control.getOrigins();
   observationData = control.getIndexNumber();
-  minMaxOrigins = control.getMinMaxOrigins();
+  println(observationData);
 }
 
 void cutImage(PVector windowCorner) {
