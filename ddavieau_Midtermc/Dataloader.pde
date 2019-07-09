@@ -45,4 +45,8 @@ class Dataloader {
       this.ydata[i] = table.getFloat(i,"time_to_failure");
     }
   }
+  
+  public Table getTable() {
+      return  table;
+    }
 }

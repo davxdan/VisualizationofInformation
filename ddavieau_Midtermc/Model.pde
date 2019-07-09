@@ -9,7 +9,7 @@ class Model {
     currentObservations= new ArrayList<Observation>();
     observations = new HashMap<String, Observation>(); //HashMap cannot contain duplicate keys,allows null values and key,is unordered
     
-    Table t = loadTable("plotme.csv");    
+    Table t = earthquakeData.getTable();    
     for(int i = 1; i < t.getRowCount(); i++) {
       TableRow r = t.getRow(i);
       observations.put(r.getString(0), new Observation(r.getInt(0),r.getInt(1), r.getFloat(2), new PVector(r.getInt(1), r.getFloat(2))));
@@ -28,7 +28,7 @@ class Model {
     for(Map.Entry entry : observations.entrySet()) {
       ((Observation)entry.getValue()).resetIndexNumber();
       
-    Table t = loadTable("plotme.csv", "header");
+    Table t = earthquakeData.getTable();    
     
     for(int i = 1; i < t.getRowCount(); i++) {
       TableRow r = t.getRow(i);
