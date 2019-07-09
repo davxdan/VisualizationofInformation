@@ -77,15 +77,13 @@ class ZoomView extends PApplet  //Creates a ZoomView object, sets the background
     fill(200);
     rect(10, 10, 80, 20);
     fill(0);
-    text("Altitude (Mts)", 15, 25);
+    text("Quickstats", 15, 25);
     pushMatrix();
     translate(0, 30);
     
     for(int i = 0; i < 5; i++) {
       stroke(0);
-      float altValue = 1f - (float(i) / 5.f);
-      int altColor = lerpColor(minColor, maxColor, altValue);
-      fill(altColor);
+      fill(255);
       pushMatrix();
       translate(10, i * 20);
       rect(0, 0, 80, 20);

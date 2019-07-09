@@ -101,6 +101,7 @@ void mouseClicked() {
   PVector windowCorner = window.getWindowCorner();
   cutImage(windowCorner);
   observationData = control.getIndexNumber();
+  println(observationData);
 }
 
 void cutImage(PVector windowCorner) {
