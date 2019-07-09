@@ -8,7 +8,7 @@ Window window; //creates a window object and returns it's corners based on locat
 Converter converter;
 
 PImage myBackground;
-public ArrayList<Observation> observationData;
+ArrayList<Observation> observationData;
 int [] zIndexNumber;
 int [] xAcousticSignal;
 float [] yTimeToFailure;

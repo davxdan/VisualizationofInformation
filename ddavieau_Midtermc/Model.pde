@@ -43,7 +43,7 @@ class Model {
         }
       }
       controller.updateObservations(currentObservations);
-      println(currentObservations.size() + "ndexNumbers loaded");
+      println(currentObservations.size() + " indexNumbers loaded");
     }
     public ArrayList<Observation> getIndexNumber() {
       return currentObservations;
