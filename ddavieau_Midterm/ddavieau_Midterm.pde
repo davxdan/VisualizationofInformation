@@ -5,13 +5,8 @@
 //Sorry to give bs excuses but here we go; 
   //I have Capstone project presentation to prepare for this week
   // I am also in the middle switching jobs, selling my home and moving long distance to DC
-
-
-
-
-//Look at ControlP5 
+ 
 import java.util.Map;
-
 Controller control;
 Dataloader earthquakeData; //declare a Dataloader object
 Gridplotter gridlines; //declare a Gridplotter object
@@ -98,9 +93,9 @@ void draw() {
     textAlign(CENTER, CENTER);
     text(ix.getIndexNumber(), xy.x, xy.y);
     
-    for(Observation o: observationData){
-     System.out.println(o) ;
-    }
+    //for(Observation o: observationData){
+    // System.out.println(o) ;
+    //}
   }
 }
  
@@ -111,7 +106,6 @@ window.updatePos(mouseX, mouseY);
 void mouseClicked() {
   PVector windowCorner = window.getWindowCorner();
   cutImage(windowCorner);
-  observationData = control.getIndexNumber();
   println(observationData);
 }
 

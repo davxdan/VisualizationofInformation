@@ -25,9 +25,7 @@ class Controller
     zoomView.updateObservations(observations);
   }
   
-    public ArrayList<Observation> getIndexNumber() {
-    return model.getIndexNumber();
-  }
+    
   
     public void setSelectedIndex(int index) //setter
   {
