@@ -58,7 +58,7 @@ class Emitter {
       }
     }
     
-    void run (float gravity, PVector turbulence, PVector wind) {
+    void run (float gravity, PVector turbulance, PVector wind) {
       for (int i=0; i<currentParticleCount; i++) {
         particles[i].velocity.y += gravity;
         particles[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));
