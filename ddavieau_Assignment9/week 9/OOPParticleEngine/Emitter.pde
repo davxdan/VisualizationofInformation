@@ -1,7 +1,8 @@
 class Emitter {
   //give us ability to launch particles and control the emission
-  //Best practice make classes concis e
-  //The physics in the world, spray, rate not the concern for
+  //Best practice make classes concise and let objects worry only about their specific properties
+  //The physics in the world, spray, rate not the concern for the particle
+  
   PVector location;
   int particleCount;
   float particleBirthRate;
@@ -27,6 +28,7 @@ class Emitter {
       this.sprayRadius = sprayRadius;
       this.isInfinite = isInfinite;
       particles = new Particle[particleCount];
+      init();
     }
 
     //yet another constructor 
@@ -56,7 +58,7 @@ class Emitter {
       }
     }
     
-    void run (float gravity, PVector turbulence, PVector wind) {
+    void run (float gravity, PVector turbulance, PVector wind) {
       for (int i=0; i<currentParticleCount; i++) {
         particles[i].velocity.y += gravity;
         particles[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));

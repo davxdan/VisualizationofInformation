@@ -8,6 +8,8 @@ class Particle{
   
   //constructors
 
+  Particle() {
+  }
   
   Particle(PVector location, PVector velocity, float scale, String particleSpriteURL) {
     this.location = location;
@@ -32,8 +34,4 @@ class Particle{
       ellipse(0,0,1,1);
     }
   }
-  
-  Particle() {
-  }
-  
 }
