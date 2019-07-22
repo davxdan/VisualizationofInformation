@@ -9,9 +9,9 @@ class Triangle extends Shape {
     this.location = location;
     this.scale = scale;
     this.velocity = velocity;
-    t = createShape(TRIANGLE, location.x, location.y,location.x-scale, location.y-scale,location.x+scale, location.y+scale);
-    t.setFill(color(0,255,0));
-    t.setStroke(true);
+    t = createShape(TRIANGLE, location.x, location.y,location.x+scale, location.y+scale,location.x+(scale*2), location.y-(scale*2));
+    t.setFill(color(146, 229, 161));
+    t.setStroke(255);
   }
 
   void move() {
