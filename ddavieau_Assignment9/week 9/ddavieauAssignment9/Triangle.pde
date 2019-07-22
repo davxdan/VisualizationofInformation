@@ -1,4 +1,4 @@
-class Triangle{
+class Triangle extends Shape{
   //fields
   
   //constructors

@@ -4,6 +4,10 @@ void setup() {
   size(1920,1080);
   Emitter emitter = new Emitter(new PVector(width/2, 200), 300, 1, new PVector(.01, -10.2), 1.25,
     true, "particlesprite.PNG", 5 );
+    
+  //ShapeGenerator shapeGenerator = new (new PVector(width/2, 200), 300, 1, new PVector(.01, -10.2), 1.25,
+  //  true, "particlesprite.PNG", 5 );
+    
   engine = new Engine(emitter, 1.15, new PVector(.5, .5), new PVector(.002, -.7));
 }
 
