@@ -10,6 +10,7 @@ class ShapeGenerator {
   boolean isInfinite = false;
   Circle[] circles;
   Square[] squares;
+  Triangle[] triangles;
   float currentShapeCount = 0;
 
   float shapeScale = 1;
@@ -33,6 +34,7 @@ class ShapeGenerator {
     this.shapeScale = shapeScale;
     circles = new Circle[shapeCount];
     squares = new Square[shapeCount];
+    triangles = new Triangle[shapeCount];
     init();
   }
 
@@ -45,6 +47,7 @@ class ShapeGenerator {
 
       circles[i] = new Circle(new PVector(location.x, location.y), vel, scale);
       squares[i] = new Square(new PVector(location.x, location.y), vel, scale);
+      triangles[i] = new Triangle(new PVector(location.x, location.y), vel, scale);
     }
   }
 
@@ -60,15 +63,11 @@ class ShapeGenerator {
       squares[i].velocity.add(wind);
       squares[i].move();
       squares[i].display();
-
-      //reset circles
-      if (isInfinite) {
-        if (circles[i].location.y>height || circles[i].location.x>width || circles[i].location.x<0) {
-          circles[i].location = new PVector(location.x, location.y);
-          circles[i].velocity = new PVector(sprayVector.x + random(-sprayRadius, sprayRadius), 
-            sprayVector.y + random(-sprayRadius, sprayRadius));
-        }
-      }
+      triangles[i].velocity.y += gravity;
+      triangles[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));
+      triangles[i].velocity.add(wind);
+      triangles[i].move();
+      triangles[i].display();
     }
     if (currentShapeCount < shapeCount - shapeBirthRate) {
       currentShapeCount += shapeBirthRate;

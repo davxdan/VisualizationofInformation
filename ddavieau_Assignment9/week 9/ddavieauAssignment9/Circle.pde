@@ -9,7 +9,7 @@ class Circle extends Shape {
     this.location = location;
     this.scale = scale;
     this.velocity = velocity;
-    e = createShape(ELLIPSE, location.x, location.y, 100, 100);
+    e = createShape(ELLIPSE, location.x, location.y, scale, scale);
     e.setFill(color(0,0,255));
     e.setStroke(true);
   }
@@ -21,8 +21,8 @@ class Circle extends Shape {
   void display() {
     pushMatrix();
     translate(location.x, location.y);
-    scale(scale);
-    shape(e); //<>//
+    shape(e);
+    scale(scale); //<>//
     popMatrix(); //<>//
   }
 }

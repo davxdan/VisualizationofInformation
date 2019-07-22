@@ -13,14 +13,5 @@ abstract class Shape {
     this.scale = scale;
     this.velocity = velocity;
   }
-
-  void move() {
-    location.add(velocity);
-  }
-
-  void display() {
-    pushMatrix();
-    translate(location.x, location.y);
-    scale(scale);
-  }
+  
 }

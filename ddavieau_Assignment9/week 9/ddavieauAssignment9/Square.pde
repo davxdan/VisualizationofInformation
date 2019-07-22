@@ -9,7 +9,7 @@ class Square extends Shape {
     this.location = location;
     this.scale = scale;
     this.velocity = velocity;
-    r = createShape(RECT, location.x, location.y, 100, 100);
+    r = createShape(RECT, location.x, location.y, scale, scale);
     r.setFill(color(255,0,0));
     r.setStroke(true);
   }
@@ -21,8 +21,8 @@ class Square extends Shape {
   void display() {
     pushMatrix();
     translate(location.x, location.y);
-    scale(scale);
     shape(r);
+    scale(scale);
     popMatrix();
   }
 }
