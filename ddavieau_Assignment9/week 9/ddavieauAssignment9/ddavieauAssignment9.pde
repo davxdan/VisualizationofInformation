@@ -1,10 +1,11 @@
 Engine engine;
 ShapeGenerator shapeGenerator;
+Axis myAxis = new Axis();
 float sketchWidth;
 float sketchHeight;
 void setup() {
   background(2, 2, 4);
-  size(1920, 1080);
+  size(1000, 1000, P3D);
   //Signature: PVector location, int shapeCount, float shapeBirthRate, PVector sprayVector, float sprayRadius, boolean isInfinite, float shapeScale
   shapeGenerator = new ShapeGenerator(new PVector(width/4, height/4), 3000, 12.05, new PVector(1.09, .2), 1.25, true, 80);
   //Signature: ShapeGenerator shapeGenerator, float gravity, PVector turbulance, PVector wind
@@ -12,7 +13,15 @@ void setup() {
 }
 
 void draw() {
-  fill(255);
+  fill(32, 72, 41);
+  camera(1000,0,1000,0,0,0,0,1,0);
+  myAxis.drawAxis();
+  lights();
+  
   //rect(-1, -1, width+1, height+1);
   engine.start();
+  pushMatrix();
+  translate(100.0,0);
+  box(100);
+  popMatrix();
 }
