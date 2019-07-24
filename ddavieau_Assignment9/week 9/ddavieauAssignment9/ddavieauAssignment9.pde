@@ -4,24 +4,23 @@ Axis myAxis = new Axis();
 float sketchWidth;
 float sketchHeight;
 void setup() {
-  background(2, 2, 4);
-  size(1000, 1000, P3D);
+  background(20, 10, 60);
+  size(3840, 2160, P3D);
   //Signature: PVector location, int shapeCount, float shapeBirthRate, PVector sprayVector, float sprayRadius, boolean isInfinite, float shapeScale
-  shapeGenerator = new ShapeGenerator(new PVector(width/4, height/4), 3000, 12.05, new PVector(1.09, .2), 1.25, true, 80);
+  shapeGenerator = new ShapeGenerator(new PVector(0, 0, 0), 300, 150, new PVector(1.09, .2, -.2), 50, true, 20);
   //Signature: ShapeGenerator shapeGenerator, float gravity, PVector turbulance, PVector wind
-  engine = new Engine(shapeGenerator, .50, new PVector(5, 5), new PVector(.009, .1));
+  engine = new Engine(shapeGenerator, .50, new PVector(0, 0,0), new PVector(0, 0,0));
 }
 
 void draw() {
-  fill(32, 72, 41);
+  fill(78, 48, 132);
   camera(1000,0,1000,0,0,0,0,1,0);
-  myAxis.drawAxis();
+  //myAxis.drawAxis();
   lights();
   
   //rect(-1, -1, width+1, height+1);
   engine.start();
   pushMatrix();
   translate(100.0,0);
-  box(100);
   popMatrix();
 }

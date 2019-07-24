@@ -56,16 +56,16 @@ class ShapeGenerator {
       circles[i].velocity.add(wind);
       circles[i].move();
       circles[i].display();
-      squares[i].velocity.y += gravity;
-      squares[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));
-      squares[i].velocity.add(wind);
-      squares[i].move();
-      squares[i].display();
-      triangles[i].velocity.y += gravity;
-      triangles[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));
-      triangles[i].velocity.add(wind);
-      triangles[i].move();
-      triangles[i].display();
+      //squares[i].velocity.y += gravity;
+      //squares[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));
+      //squares[i].velocity.add(wind);
+      //squares[i].move();
+      //squares[i].display();
+      //triangles[i].velocity.y += gravity;
+      //triangles[i].velocity.add(new PVector(random(-turbulance.x, turbulance.x), random(-turbulance.y, turbulance.y)));
+      //triangles[i].velocity.add(wind);
+      //triangles[i].move();
+      //triangles[i].display();
     }
     if (currentShapeCount < shapeCount - shapeBirthRate) {
       currentShapeCount += shapeBirthRate;
