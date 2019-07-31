@@ -5,7 +5,7 @@ float sketchWidth;
 float sketchHeight;
 void setup() {
   background(20, 10, 60);
-  size(3840, 2160, P3D);
+  size(1920, 1080, P3D);
   //Signature: PVector location, int shapeCount, float shapeBirthRate, PVector sprayVector, float sprayRadius, boolean isInfinite, float shapeScale
   shapeGenerator = new ShapeGenerator(new PVector(0, 0, 0), 300, 150, new PVector(1.09, .2, -.2), 50, true, 20);
   //Signature: ShapeGenerator shapeGenerator, float gravity, PVector turbulance, PVector wind
