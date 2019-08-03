@@ -1,12 +1,30 @@
-import processing.core.*;
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import processing.core.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class dDavieau_Final extends PApplet {
+
+
 PVector[] vecData = new PVector[1500];
 int dimensions = 750;
 Dataloader acousticSignal;
 int[] y;
 float x;
 
-void setup() {
-  size(1500, 1500, P3D);
+public void setup() {
+  
   
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,7 +36,7 @@ void setup() {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
-void draw() {
+public void draw() {
   background(13,2,8);
   translate(width/2, height/2);
   scale(1, -1, 1); // so Y is up, which makes more sense in plotting
@@ -42,4 +60,14 @@ void draw() {
     //vertex(v.x, v.z, v.x, v.y, v.z);
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
+  public void settings() {  size(1500, 1500, P3D); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "dDavieau_Final" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
